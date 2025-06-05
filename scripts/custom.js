@@ -1,10 +1,8 @@
-//Removing Preloader
-setTimeout(function () {
-  var preloader = document.getElementById("preloader");
-  if (preloader) {
-    preloader.classList.add("preloader-hide");
-  }
-}, 150);
+import { initPreloader } from '../js/modules/preloader.js';
+import { initThemeManager } from '../js/modules/themeManager.js';
+import { initPWA } from '../js/modules/pwaHandler.js';
+import { cacheManager } from '../js/modules/cacheManager.js';
+initPreloader();
 
 document.addEventListener("DOMContentLoaded", () => {
   "use strict";
@@ -13,12 +11,35 @@ document.addEventListener("DOMContentLoaded", () => {
   let isPWA = true; // Enables or disables the service worker and PWA - ENABLED WITH MAXIMUM CACHING
   let isAJAX = true; // AJAX transitions. Requires local server or server
   var pwaName = "QuoVadis"; //Local Storage Names for PWA
+  initThemeManager({ pwaName: pwaName });
   var pwaRemind = 1; //Days to re-remind to add to home
   var pwaNoCache = false; //Requires server and HTTPS/SSL. Will clear cache with each visit
 
   //Setting Service Worker Locations scope = folder | location = service worker js location
   var pwaScope = "/";
   var pwaLocation = "/service-worker.js";
+
+  // Initialize PWA Handler
+  initPWA({
+    isPWA: isPWA,
+    pwaName: pwaName,
+    pwaRemind: pwaRemind,
+    pwaLocation: pwaLocation,
+    pwaScope: pwaScope,
+    pwaNoCache: pwaNoCache
+  });
+
+  const isMobile = {
+    Android: function () {
+      return navigator.userAgent.match(/Android/i);
+    },
+    iOS: function () {
+      return navigator.userAgent.match(/iPhone|iPad|iPod/i);
+    },
+    any: function () {
+      return isMobile.Android() || isMobile.iOS();
+    },
+  };
 
   //Place all your custom Javascript functions and plugin calls below this line
   function init_template() {
@@ -536,64 +557,6 @@ document.addEventListener("DOMContentLoaded", () => {
       window.addEventListener("resize", card_extender);
     }
 
-    //Page Highlights
-    var highlightData = document.querySelectorAll("[data-change-highlight]");
-    highlightData.forEach((el) =>
-      el.addEventListener("click", (e) => {
-        var highlight = el.getAttribute("data-change-highlight");
-        var pageHighlight = document.querySelectorAll(".page-highlight");
-        if (pageHighlight.length) {
-          pageHighlight.forEach(function (e) {
-            e.remove();
-          });
-        }
-        var loadHighlight = document.createElement("link");
-        loadHighlight.rel = "stylesheet";
-        loadHighlight.className = "page-highlight";
-        loadHighlight.type = "text/css";
-        loadHighlight.href =
-          "styles/highlights/highlight_" + highlight + ".css";
-        document.getElementsByTagName("head")[0].appendChild(loadHighlight);
-        document.body.setAttribute("data-highlight", "highlight-" + highlight);
-        localStorage.setItem(pwaName + "-Highlight", highlight);
-      })
-    );
-    var rememberHighlight = localStorage.getItem(pwaName + "-Highlight");
-    if (rememberHighlight) {
-      document.body.setAttribute("data-highlight", rememberHighlight);
-      var loadHighlight = document.createElement("link");
-      loadHighlight.rel = "stylesheet";
-      loadHighlight.className = "page-highlight";
-      loadHighlight.type = "text/css";
-      loadHighlight.href =
-        "styles/highlights/highlight_" + rememberHighlight + ".css";
-      if (!document.querySelectorAll(".page-highlight").length) {
-        document.getElementsByTagName("head")[0].appendChild(loadHighlight);
-        document.body.setAttribute(
-          "data-highlight",
-          "highlight-" + rememberHighlight
-        );
-      }
-    } else {
-      var bodyHighlight = document.body.getAttribute("data-highlight");
-      var defaultHighlight = bodyHighlight.split("highlight-");
-      document.body.setAttribute("data-highlight", defaultHighlight[1]);
-      var loadHighlight = document.createElement("link");
-      loadHighlight.rel = "stylesheet";
-      loadHighlight.className = "page-highlight";
-      loadHighlight.type = "text/css";
-      loadHighlight.href =
-        "styles/highlights/highlight_" + defaultHighlight[1] + ".css";
-      if (!document.querySelectorAll(".page-highlight").length) {
-        document.getElementsByTagName("head")[0].appendChild(loadHighlight);
-        document.body.setAttribute(
-          "data-highlight",
-          "highlight-" + defaultHighlight[1]
-        );
-        localStorage.setItem(pwaName + "-Highlight", defaultHighlight[1]);
-      }
-    }
-
     //Background Gradient Color
     var gradientData = document.querySelectorAll("[data-change-background]");
     gradientData.forEach((el) =>
@@ -613,103 +576,7 @@ document.addEventListener("DOMContentLoaded", () => {
       );
     }
 
-    //Dark Mode
-    const toggleDark = document.querySelectorAll("[data-toggle-theme]");
-    function activateDarkMode() {
-      document.body.classList.add("theme-dark");
-      document.body.classList.remove("theme-light", "detect-theme");
-      for (let i = 0; i < toggleDark.length; i++) {
-        toggleDark[i].checked = "checked";
-      }
-      localStorage.setItem(pwaName + "-Theme", "dark-mode");
-    }
-    function activateLightMode() {
-      document.body.classList.add("theme-light");
-      document.body.classList.remove("theme-dark", "detect-theme");
-      for (let i = 0; i < toggleDark.length; i++) {
-        toggleDark[i].checked = false;
-      }
-      localStorage.setItem(pwaName + "-Theme", "light-mode");
-    }
-    function removeTransitions() {
-      var falseTransitions = document.querySelectorAll(
-        ".btn, .header, #footer-bar, .menu-box, .menu-active"
-      );
-      for (let i = 0; i < falseTransitions.length; i++) {
-        falseTransitions[i].style.transition = "all 0s ease";
-      }
-    }
-    function addTransitions() {
-      var trueTransitions = document.querySelectorAll(
-        ".btn, .header, #footer-bar, .menu-box, .menu-active"
-      );
-      for (let i = 0; i < trueTransitions.length; i++) {
-        trueTransitions[i].style.transition = "";
-      }
-    }
-
-    function setColorScheme() {
-      const isDarkMode = window.matchMedia(
-        "(prefers-color-scheme: dark)"
-      ).matches;
-      const isLightMode = window.matchMedia(
-        "(prefers-color-scheme: light)"
-      ).matches;
-      const isNoPreference = window.matchMedia(
-        "(prefers-color-scheme: no-preference)"
-      ).matches;
-      window
-        .matchMedia("(prefers-color-scheme: dark)")
-        .addListener((e) => e.matches && activateDarkMode());
-      window
-        .matchMedia("(prefers-color-scheme: light)")
-        .addListener((e) => e.matches && activateLightMode());
-      if (isDarkMode) activateDarkMode();
-      if (isLightMode) activateLightMode();
-    }
-
-    //Activating Dark Mode
-    const darkModeSwitch = document.querySelectorAll("[data-toggle-theme]");
-    darkModeSwitch.forEach((el) =>
-      el.addEventListener("click", (e) => {
-        if (document.body.className == "theme-light") {
-          removeTransitions();
-          activateDarkMode();
-        } else if (document.body.className == "theme-dark") {
-          removeTransitions();
-          activateLightMode();
-        }
-        setTimeout(function () {
-          addTransitions();
-        }, 350);
-      })
-    );
-
-    //Set Color Based on Remembered Preference.
-    if (localStorage.getItem(pwaName + "-Theme") == "dark-mode") {
-      for (let i = 0; i < toggleDark.length; i++) {
-        toggleDark[i].checked = "checked";
-      }
-      document.body.className = "theme-dark";
-    }
-    if (localStorage.getItem(pwaName + "-Theme") == "light-mode") {
-      document.body.className = "theme-light";
-    }
-    if (document.body.className == "detect-theme") {
-      setColorScheme();
-    }
-
-    //Detect Dark/Light Mode
-    const darkModeDetect = document.querySelectorAll(".detect-dark-mode");
-    darkModeDetect.forEach((el) =>
-      el.addEventListener("click", (e) => {
-        document.body.classList.remove("theme-light", "theme-dark");
-        document.body.classList.add("detect-theme");
-        setTimeout(function () {
-          setColorScheme();
-        }, 50);
-      })
-    );
+    //Dark Mode - Logic moved to js/modules/themeManager.js
 
     //Accordion Rotate
     const accordionBtn = document.querySelectorAll(".accordion-btn");
@@ -1808,19 +1675,7 @@ document.addEventListener("DOMContentLoaded", () => {
       })
     );
 
-    //Detecting Mobile OS
-    let isMobile = {
-      Android: function () {
-        return navigator.userAgent.match(/Android/i);
-      },
-      iOS: function () {
-        return navigator.userAgent.match(/iPhone|iPad|iPod/i);
-      },
-      any: function () {
-        return isMobile.Android() || isMobile.iOS();
-      },
-    };
-
+    //Detecting Mobile OS - Moved to pwaHandler.js
     const androidDev = document.getElementsByClassName("show-android");
     const iOSDev = document.getElementsByClassName("show-ios");
     const noDev = document.getElementsByClassName("show-no-device");
@@ -1865,227 +1720,9 @@ document.addEventListener("DOMContentLoaded", () => {
       });
     }
 
-    //PWA Settings
-    if (isPWA === true) {
-      var checkPWA = document.getElementsByTagName("html")[0];
-      if (!checkPWA.classList.contains("isPWA")) {
-        if ("serviceWorker" in navigator) {
-          window.addEventListener("load", function () {
-            navigator.serviceWorker
-              .register(pwaLocation, { scope: pwaScope })
-              .then(function (registration) {
-                registration.update();
-              });
-          });
-        }
+    //PWA Settings - Moved to pwaHandler.js
 
-        //Setting Timeout Before Prompt Shows Again if Dismissed
-        var hours = pwaRemind * 24; // Reset when storage is more than 24hours
-        var now = Date.now();
-        var setupTime = localStorage.getItem(pwaName + "-PWA-Timeout-Value");
-        if (setupTime == null) {
-          localStorage.setItem(pwaName + "-PWA-Timeout-Value", now);
-        } else if (now - setupTime > hours * 60 * 60 * 1000) {
-          localStorage.removeItem(pwaName + "-PWA-Prompt");
-          localStorage.setItem(pwaName + "-PWA-Timeout-Value", now);
-        }
-
-        const pwaClose = document.querySelectorAll(".pwa-dismiss");
-        pwaClose.forEach((el) =>
-          el.addEventListener("click", (e) => {
-            const pwaWindows = document.querySelectorAll(
-              "#menu-install-pwa-android, #menu-install-pwa-ios"
-            );
-            for (let i = 0; i < pwaWindows.length; i++) {
-              pwaWindows[i].classList.remove("menu-active");
-            }
-            localStorage.setItem(pwaName + "-PWA-Timeout-Value", now);
-            localStorage.setItem(pwaName + "-PWA-Prompt", "install-rejected");
-            console.log(
-              "PWA Install Rejected. Will Show Again in " + pwaRemind + " Days"
-            );
-          })
-        );
-
-        //Trigger Install Prompt for Android
-        const pwaWindows = document.querySelectorAll(
-          "#menu-install-pwa-android, #menu-install-pwa-ios"
-        );
-        if (pwaWindows.length) {
-          if (isMobile.Android()) {
-            if (
-              localStorage.getItem(pwaName + "-PWA-Prompt") !=
-              "install-rejected"
-            ) {
-              function showInstallPrompt() {
-                setTimeout(function () {
-                  if (
-                    !window.matchMedia("(display-mode: fullscreen)").matches
-                  ) {
-                    console.log("Triggering PWA Window for Android");
-                    document
-                      .getElementById("menu-install-pwa-android")
-                      .classList.add("menu-active");
-                    document
-                      .querySelectorAll(".menu-hider")[0]
-                      .classList.add("menu-active");
-                  }
-                }, 3500);
-              }
-              var deferredPrompt;
-              window.addEventListener("beforeinstallprompt", (e) => {
-                e.preventDefault();
-                deferredPrompt = e;
-                showInstallPrompt();
-              });
-            }
-            const pwaInstall = document.querySelectorAll(".pwa-install");
-            pwaInstall.forEach((el) =>
-              el.addEventListener("click", (e) => {
-                deferredPrompt.prompt();
-                deferredPrompt.userChoice.then((choiceResult) => {
-                  if (choiceResult.outcome === "accepted") {
-                    console.log("Added");
-                  } else {
-                    localStorage.setItem(pwaName + "-PWA-Timeout-Value", now);
-                    localStorage.setItem(
-                      pwaName + "-PWA-Prompt",
-                      "install-rejected"
-                    );
-                    setTimeout(function () {
-                      if (
-                        !window.matchMedia("(display-mode: fullscreen)").matches
-                      ) {
-                        document
-                          .getElementById("menu-install-pwa-android")
-                          .classList.remove("menu-active");
-                        document
-                          .querySelectorAll(".menu-hider")[0]
-                          .classList.remove("menu-active");
-                      }
-                    }, 50);
-                  }
-                  deferredPrompt = null;
-                });
-              })
-            );
-            window.addEventListener("appinstalled", (evt) => {
-              document
-                .getElementById("menu-install-pwa-android")
-                .classList.remove("menu-active");
-              document
-                .querySelectorAll(".menu-hider")[0]
-                .classList.remove("menu-active");
-            });
-          }
-          //Trigger Install Guide iOS
-          if (isMobile.iOS()) {
-            if (
-              localStorage.getItem(pwaName + "-PWA-Prompt") !=
-              "install-rejected"
-            ) {
-              setTimeout(function () {
-                if (!window.matchMedia("(display-mode: fullscreen)").matches) {
-                  console.log("Triggering PWA Window for iOS");
-                  document
-                    .getElementById("menu-install-pwa-ios")
-                    .classList.add("menu-active");
-                  document
-                    .querySelectorAll(".menu-hider")[0]
-                    .classList.add("menu-active");
-                }
-              }, 3500);
-            }
-          }
-        }
-      }
-      checkPWA.setAttribute("class", "isPWA");
-    }
-
-    //End of isPWA
-    if (pwaNoCache === true) {
-      sessionStorage.clear();
-      caches.keys().then((cacheNames) => {
-        cacheNames.forEach((cacheName) => {
-          caches.delete(cacheName);
-        });
-      });
-    }
-
-    // Cache Management Utilities
-    window.cacheManager = {
-      async getStorageInfo() {
-        if ("storage" in navigator && "estimate" in navigator.storage) {
-          const estimate = await navigator.storage.estimate();
-          const isIOS = /iPad|iPhone|iPod/.test(navigator.userAgent);
-          const fallbackStorage = isIOS ? 50 * 1024 * 1024 : 100 * 1024 * 1024;
-          const actualQuota = estimate.quota || fallbackStorage;
-
-          return {
-            used: estimate.usage || 0,
-            available: actualQuota,
-            percentage: estimate.usage ? estimate.usage / actualQuota : 0,
-            usedMB: Math.round((estimate.usage || 0) / 1024 / 1024),
-            availableMB: Math.round(actualQuota / 1024 / 1024),
-            isIOS: isIOS,
-            actualQuotaMB: Math.round((estimate.quota || 0) / 1024 / 1024),
-            usingFallback: !estimate.quota,
-          };
-        }
-        return null;
-      },
-
-      async clearCache() {
-        try {
-          const cacheNames = await caches.keys();
-          await Promise.all(
-            cacheNames.map((cacheName) => caches.delete(cacheName))
-          );
-          console.log("Cache cleared successfully");
-          return true;
-        } catch (error) {
-          console.error("Failed to clear cache:", error);
-          return false;
-        }
-      },
-
-      async logStorageUsage() {
-        const info = await this.getStorageInfo();
-        if (info) {
-          console.log("Storage Usage:", {
-            used: info.usedMB + "MB",
-            available: info.availableMB + "MB",
-            actualQuota: info.actualQuotaMB + "MB",
-            usingFallback: info.usingFallback,
-            percentage: Math.round(info.percentage * 100) + "%",
-            platform: info.isIOS ? "iOS" : "Other",
-            cacheThreshold: "95%",
-          });
-
-          // Also log cache breakdown
-          try {
-            const cacheNames = await caches.keys();
-            console.log("Cache Status:", {
-              caches: cacheNames.length,
-              thumbnailCachingEnabled: true,
-              videosCached: true,
-              videoCacheThreshold: "70%",
-              storageUtilization:
-                Math.round(info.percentage * 100) + "% of available quota",
-            });
-          } catch (error) {
-            console.log("Could not get cache details:", error);
-          }
-        }
-      },
-    };
-
-    // Log storage usage on page load (if PWA is enabled)
-    if (isPWA) {
-      setTimeout(() => {
-        window.cacheManager.logStorageUsage();
-      }, 2000);
-    }
+    // Cache Management Utilities - Moved to js/modules/cacheManager.js
 
     //Lazy Loading
     var lazyLoad = new LazyLoad();
@@ -2207,66 +1844,13 @@ document.addEventListener("DOMContentLoaded", () => {
   //End of Init Template
   init_template();
 
-  // Cache Management Utilities for Maximum Storage Usage
-  window.cacheManager = {
-    async getStorageInfo() {
-      if ("storage" in navigator && "estimate" in navigator.storage) {
-        const estimate = await navigator.storage.estimate();
-        const info = {
-          used: estimate.usage || 0,
-          available: estimate.quota || 0,
-          usedMB: Math.round((estimate.usage || 0) / 1024 / 1024),
-          availableMB: Math.round((estimate.quota || 0) / 1024 / 1024),
-          percentage: estimate.usage
-            ? estimate.usage / (estimate.quota || 1)
-            : 0,
-          percentageText:
-            Math.round(
-              (estimate.usage ? estimate.usage / (estimate.quota || 1) : 0) *
-                100
-            ) + "%",
-        };
-        console.log("📊 Storage Info:", info);
-        return info;
-      }
-      return null;
-    },
-
-    async clearCache() {
-      const cacheNames = await caches.keys();
-      await Promise.all(cacheNames.map((name) => caches.delete(name)));
-      console.log("🗑️ All caches cleared");
-      location.reload();
-    },
-
-    async logStorageUsage() {
-      const info = await this.getStorageInfo();
-      if (info) {
-        console.log(
-          `💾 Cache Usage: ${info.usedMB}MB / ${info.availableMB}MB (${info.percentageText})`
-        );
-      }
-    },
-
-    async listCachedFiles() {
-      const cacheNames = await caches.keys();
-      for (const cacheName of cacheNames) {
-        const cache = await caches.open(cacheName);
-        const requests = await cache.keys();
-        console.log(`📁 Cache: ${cacheName} (${requests.length} files)`);
-        requests.forEach((req) => console.log(`  - ${req.url}`));
-      }
-    },
-  };
+  // Cache Management Utilities for Maximum Storage Usage - Moved to js/modules/cacheManager.js
 
   // Auto-log storage usage every 30 seconds for monitoring
   setInterval(async () => {
-    if (window.cacheManager) {
-      await window.cacheManager.logStorageUsage();
+    if (cacheManager) { // Use imported cacheManager
+      await cacheManager.logStorageUsage();
     }
   }, 30000);
 
-  console.log(
-    "🚀 Cache Manager loaded. Use window.cacheManager.getStorageInfo() to check usage"
-  );
 });
