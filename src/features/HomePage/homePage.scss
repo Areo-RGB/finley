@@ -1,0 +1,250 @@
+// HomePage Feature Styles
+// Extracted from index.html inline styles and related CSS
+
+/* Video Swiper Styles */
+.video-slide {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  opacity: 0;
+  transition: opacity 0.5s ease-in-out;
+
+  &.active {
+    opacity: 1;
+  }
+}
+
+.indicator {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.3);
+  cursor: pointer;
+  transition: background 0.3s ease;
+
+  &.active {
+    background: rgba(255, 255, 255, 0.8) !important;
+  }
+}
+
+.swipe-indicators {
+  position: absolute;
+  bottom: 20px;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 4;
+  display: flex;
+  gap: 8px;
+}
+
+/* Finley Letter Animation */
+.finley-animated-heading {
+  font-size: 4rem;
+  font-weight: bold;
+  margin: 15px 0 10px;
+
+  span {
+    display: inline-block;
+    opacity: 0;
+
+    &.fade-in-letter-anim {
+      animation: fadeInLetter 0.5s forwards;
+    }
+  }
+}
+
+@keyframes fadeInLetter {
+  to {
+    opacity: 1;
+  }
+}
+
+/* Statistics Animation */
+.statistics-container {
+  margin-top: 10px;
+  width: 90%;
+  max-width: 420px;
+  margin-left: auto;
+  margin-right: auto;
+  font-size: 0.9rem;
+}
+
+.statistic-item {
+  display: flex;
+  align-items: center;
+  padding: 5px 0;
+  color: white;
+  opacity: 0;
+  transition: opacity 0.3s ease-in-out;
+  min-height: 2.4em;
+
+  .stat-exercise-name,
+  .stat-result,
+  .stat-rating-container {
+    opacity: 0;
+    white-space: nowrap;
+  }
+
+  .stat-exercise-name {
+    flex-basis: 35%;
+    flex-shrink: 0;
+    text-align: left;
+  }
+
+  .stat-result {
+    font-weight: 600;
+    flex-basis: 20%;
+    flex-shrink: 0;
+    text-align: right;
+  }
+
+  .stat-rating-container {
+    text-align: center;
+    flex-grow: 1;
+    flex-basis: 45%;
+  }
+}
+
+/* Animation Classes */
+.animate-slide-in-left {
+  animation: slideInFromLeft 0.6s cubic-bezier(0.25, 0.46, 0.45, 0.94) forwards;
+}
+
+.animate-slide-in-right {
+  animation: slideInFromRight 0.6s cubic-bezier(0.25, 0.46, 0.45, 0.94) forwards;
+}
+
+@keyframes slideInFromLeft {
+  0% {
+    transform: translateX(-40px);
+    opacity: 0;
+  }
+  100% {
+    transform: translateX(0);
+    opacity: 1;
+  }
+}
+
+@keyframes slideInFromRight {
+  0% {
+    transform: translateX(40px);
+    opacity: 0;
+  }
+  100% {
+    transform: translateX(0);
+    opacity: 1;
+  }
+}
+
+/* Rating Label Styles */
+.stat-rating-text {
+  font-weight: bold;
+  padding: 4px 8px;
+  border-radius: 4px;
+  white-space: nowrap;
+  display: inline-block;
+  line-height: 1.3;
+  font-size: 0.85em;
+  text-transform: uppercase;
+}
+
+.label-ausgezeichnet {
+  background-color: #28a745;
+  color: white;
+}
+
+.label-sehr-gut {
+  background-color: #17a2b8;
+  color: white;
+}
+
+.label-durchschnittlich {
+  background-color: #ffc107;
+  color: #212529;
+}
+
+.label-unterdurchschnittlich {
+  background-color: #dc3545;
+  color: white;
+}
+
+.animate-rating-drop-in {
+  animation: ratingDropInAnimation 0.7s cubic-bezier(0.68, -0.55, 0.265, 1.55) forwards;
+}
+
+@keyframes ratingDropInAnimation {
+  0% {
+    opacity: 0;
+    transform: translateY(-25px) scale(0.8);
+  }
+  60% {
+    opacity: 1;
+    transform: translateY(5px) scale(1.05);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+/* Prominent Divider */
+.statistics-container .divider.divider-prominent {
+  height: 1px;
+  background-color: rgba(255, 255, 255, 0.35) !important;
+  margin-top: 20px !important;
+  margin-bottom: 20px !important;
+}
+
+/* Summary Item Styling */
+.statistic-item-summary {
+  margin-top: 10px;
+
+  .stat-exercise-name {
+    font-size: 1.15em !important;
+    font-weight: 700 !important;
+    flex-basis: 40% !important;
+  }
+
+  .stat-result {
+    font-size: 1.15em !important;
+    font-weight: 700 !important;
+    flex-basis: 25% !important;
+  }
+
+  .stat-rating-container {
+    flex-basis: 35% !important;
+
+    .stat-rating-text {
+      font-size: 0.9em !important;
+      font-weight: bold !important;
+      padding: 6px 12px !important;
+    }
+  }
+}
+
+/* Video Container Styles */
+#video-swiper {
+  position: relative;
+  overflow: hidden;
+
+  .card-top {
+    position: relative;
+    z-index: 2;
+  }
+
+  .card-bottom {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 3;
+    text-align: center;
+    width: 100%;
+  }
+
+  .card-overlay {
+    z-index: 2;
+  }
+}

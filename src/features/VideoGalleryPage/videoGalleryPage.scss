@@ -1,0 +1,269 @@
+// VideoGalleryPage Feature Styles
+// Styles for video cards, swipe functionality, and video playback
+
+/* Video Card Container */
+.video-card-container {
+  position: relative;
+  overflow: hidden;
+  border-radius: 8px;
+
+  .card-video-bg {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    z-index: 1;
+    transition: transform 0.3s ease;
+  }
+
+  .card-top,
+  .card-bottom {
+    position: relative;
+    z-index: 3;
+  }
+
+  .card-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 2;
+  }
+
+  &:hover .card-video-bg {
+    transform: scale(1.05);
+  }
+}
+
+/* Swipe Card Container */
+.swipe-card-container {
+  position: relative;
+  overflow: hidden;
+
+  .swipe-card {
+    display: none;
+    width: 100%;
+
+    &.active {
+      display: block;
+    }
+  }
+
+  .swipe-indicators {
+    position: absolute;
+    bottom: 10px;
+    right: 15px;
+    z-index: 4;
+    display: flex;
+    gap: 6px;
+
+    .indicator {
+      width: 6px;
+      height: 6px;
+      border-radius: 50%;
+      background: rgba(255, 255, 255, 0.3);
+      cursor: pointer;
+      transition: all 0.3s ease;
+
+      &.active {
+        background: rgba(255, 255, 255, 0.8);
+      }
+
+      &:hover {
+        background: rgba(255, 255, 255, 0.6);
+      }
+    }
+  }
+}
+
+/* Video Modal Styles */
+.video-modal-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.9);
+  z-index: 9999;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 20px;
+  animation: fadeIn 0.3s ease;
+
+  .video-container {
+    position: relative;
+    width: 100%;
+    max-width: 800px;
+    background: #000;
+    border-radius: 8px;
+    overflow: hidden;
+    animation: slideIn 0.3s ease;
+
+    video {
+      width: 100%;
+      height: auto;
+      display: block;
+    }
+
+    .close-button {
+      position: absolute;
+      top: 10px;
+      right: 10px;
+      background: rgba(0, 0, 0, 0.7);
+      color: white;
+      border: none;
+      width: 40px;
+      height: 40px;
+      border-radius: 50%;
+      font-size: 24px;
+      cursor: pointer;
+      z-index: 10000;
+      transition: background 0.3s ease;
+
+      &:hover {
+        background: rgba(0, 0, 0, 0.9);
+      }
+    }
+  }
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+@keyframes slideIn {
+  from { 
+    opacity: 0;
+    transform: scale(0.9) translateY(20px);
+  }
+  to { 
+    opacity: 1;
+    transform: scale(1) translateY(0);
+  }
+}
+
+/* Card Effect Classes */
+.card-scale-image {
+  transform: scale(1.1);
+  transition: transform 0.3s ease;
+}
+
+.card-hide-image {
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+.card-rotate-image {
+  transform: rotate(5deg);
+  transition: transform 0.3s ease;
+}
+
+.card-grayscale-image {
+  filter: grayscale(100%);
+  transition: filter 0.3s ease;
+}
+
+.card-blur-image {
+  filter: blur(3px);
+  transition: filter 0.3s ease;
+}
+
+/* Play Button Styles */
+.play-now-btn {
+  position: relative;
+  overflow: hidden;
+  transition: all 0.3s ease;
+
+  &:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+  }
+
+  &:active {
+    transform: translateY(0);
+  }
+}
+
+/* DFB Tab Logo */
+.dfb-tab-logo {
+  height: 40px;
+  width: auto;
+  filter: brightness(0) invert(1);
+  opacity: 0.8;
+  transition: opacity 0.3s ease;
+
+  &:hover {
+    opacity: 1;
+  }
+}
+
+/* Video Card Time Badge */
+.bg-theme {
+  backdrop-filter: blur(10px);
+  background: rgba(255, 255, 255, 0.1) !important;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+/* Star Rating Styles */
+.fa-star {
+  &.color-yellow-dark {
+    color: #ffc107;
+  }
+}
+
+.fa-star-o {
+  &.color-white {
+    color: rgba(255, 255, 255, 0.5);
+  }
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .video-modal-overlay {
+    padding: 10px;
+
+    .video-container {
+      .close-button {
+        top: 5px;
+        right: 5px;
+        width: 35px;
+        height: 35px;
+        font-size: 20px;
+      }
+    }
+  }
+
+  .swipe-card-container {
+    .swipe-indicators {
+      bottom: 5px;
+      right: 10px;
+      gap: 4px;
+
+      .indicator {
+        width: 8px;
+        height: 8px;
+      }
+    }
+  }
+
+  .dfb-tab-logo {
+    height: 35px;
+  }
+}
+
+/* Touch-friendly improvements */
+@media (hover: none) and (pointer: coarse) {
+  .video-card-container:hover .card-video-bg {
+    transform: none;
+  }
+
+  .play-now-btn:hover {
+    transform: none;
+    box-shadow: none;
+  }
+}

@@ -1,0 +1,240 @@
+<!DOCTYPE HTML>
+<html lang="en">
+
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+  <meta name="mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+  <meta name="viewport"
+    content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1, viewport-fit=cover" />
+  <title>StickyMobile BootStrap</title>
+  <!-- Main SCSS entry point (Vite will process this) -->
+  <link rel="stylesheet" type="text/css" href="/src/assets/styles/main.scss">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&family=Source+Sans+Pro:wght@400;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" integrity="sha512-SnH5WK+bZxgPHs44uWIX+LLJAJ9/2PkPKZ5QiAj6Ta86w+fsb2TkcmfRyVX3pBnMFcV7oQPJkl9QevSCWr3W6A==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+  <link rel="manifest" href="manifest.json" data-pwa-version="set_in_manifest_and_pwa_js">
+  <link rel="apple-touch-icon" sizes="180x180" href="app/icons/icon-192x192.png">
+</head>
+
+<body class="theme-dark" data-highlight="highlight-blue" data-gradient="body-default">
+
+  <div id="preloader">
+    <div class="spinner-border color-highlight" role="status"></div>
+  </div>
+
+  <div id="page">
+
+    <div class="header header-fixed header-logo-center">
+      <a href="index.html" class="header-title">Sticky Mobile</a>
+      <a href="#" data-back-button class="header-icon header-icon-1"><i class="fas fa-arrow-left"></i></a>
+      <a href="#" data-toggle-theme class="header-icon header-icon-4"><i class="fas fa-lightbulb"></i></a>
+    </div>
+
+    <div id="footer-bar" class="footer-bar-1">
+      <a href="page-Vergleich.html" class="active-nav"><i class="fa fa-chart-bar"></i><span>Vergleich</span></a>
+      <a href="page-profile-finley.html"><i class="fa fa-futbol"></i><span>Training</span></a>
+      <a href="index.html"><i class="fa fa-home"></i><span>Home</span></a>
+      <a href="page-videos.html"><i class="fa fa-video"></i><span>Videos</span></a>
+      <a href="#" data-menu="menu-settings"><i class="fa fa-cog"></i><span>Settings</span></a>
+    </div>
+
+    <div class="page-content header-clear-medium">
+
+
+      <div class="card card-style">
+        <!-- Only one before and after slider can be used per page -->
+        <div id="before-after-slider" class="rounded-m">
+          <div id="before-image">
+            <video muted loop playsinline class="no-click" alt="before">
+              <source src="https://videos-data.fra1.cdn.digitaloceanspaces.com/b.mp4" type="video/mp4">
+              Your browser does not support the video tag.
+            </video>
+          </div>
+          <div id="after-image">
+            <video muted loop playsinline class="no-click" alt="after">
+              <source src="https://videos-data.fra1.cdn.digitaloceanspaces.com/c.mp4" type="video/mp4">
+              Your browser does not support the video tag.
+            </video>
+          </div>
+          <div id="resizer"></div>
+        </div>
+      </div>
+
+      <!-- Video Control Buttons -->
+      <div class="card card-style">
+        <div class="content">
+          <div class="row">
+            <div class="col-6">
+              <button id="before-video-control"
+                class="btn btn-m btn-full rounded-s bg-highlight text-uppercase font-700 mb-3">
+                <i class="fa fa-play me-2"></i>Play Bent
+              </button>
+            </div>
+            <div class="col-6">
+              <button id="after-video-control"
+                class="btn btn-m btn-full rounded-s bg-blue-dark text-uppercase font-700 mb-3">
+                <i class="fa fa-play me-2"></i>Play Finley
+              </button>
+            </div>
+          </div>
+
+          <!-- Speed Control Buttons -->
+          <div class="row mt-3">
+            <div class="col-12">
+              <h6 class="mb-2">Playback Speed</h6>
+            </div>
+            <div class="col-3">
+              <button id="speed-025" class="btn btn-s btn-full rounded-s bg-gray-dark text-uppercase font-600 mb-2">
+                0.25x
+              </button>
+            </div>
+            <div class="col-3">
+              <button id="speed-05" class="btn btn-s btn-full rounded-s bg-gray-dark text-uppercase font-600 mb-2">
+                0.5x
+              </button>
+            </div>
+            <div class="col-3">
+              <button id="speed-1"
+                class="btn btn-s btn-full rounded-s bg-green-dark text-uppercase font-600 mb-2 active-speed">
+                1x
+              </button>
+            </div>
+            <div class="col-3">
+              <button id="sync-videos" class="btn btn-s btn-full rounded-s bg-red-dark text-uppercase font-600 mb-2">
+                <i class="fa fa-sync me-1"></i>Sync
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+
+
+
+    </div>
+
+  </div>
+  <!-- End of Page Content-->
+  <!-- All Menus, Action Sheets, Modals, Notifications, Toasts, Snackbars get Placed outside the <div class="page-content"> -->
+
+  <div id="menu-schedule" class="menu menu-box-modal menu-box-detached rounded-m">
+    <div class="menu-title">
+      <h1>Book a Photoshoot</h1>
+      <a href="#" class="close-menu mt-n2"><i class="fa fa-times font-16"></i></a>
+    </div>
+    <div class="divider divider-margins mt-3"></div>
+    <div class="content">
+      <div class="input-style has-borders input-style-always-active has-icon validate-field mb-4">
+        <i class="fa fa-user"></i>
+        <input type="name" class="form-control validate-name" id="form1" placeholder="Name" />
+        <label for="form1" class="color-blue-dark">Name</label>
+        <i class="fa fa-times disabled invalid color-red-dark"></i>
+        <i class="fa fa-check disabled valid color-green-dark"></i>
+        <em>(required)</em>
+      </div>
+
+      <div class="input-style has-borders input-style-always-active has-icon validate-field mb-4">
+        <i class="fa fa-phone"></i>
+        <input type="tel" class="form-control validate-text" id="form4" placeholder="Phone" />
+        <label for="form4" class="color-blue-dark">Phone</label>
+        <i class="fa fa-times disabled invalid color-red-dark"></i>
+        <i class="fa fa-check disabled valid color-green-dark"></i>
+        <em>(required)</em>
+      </div>
+
+      <div class="input-style has-borders input-style-always-active has-icon mb-4">
+        <i class="fa fa-calendar"></i>
+        <input type="date" value="2030-12-31" max="2030-01-01" min="2021-01-01" class="form-control validate-text"
+          id="form6" placeholder="Phone" />
+        <label for="form6" class="color-blue-dark">Select Date</label>
+        <i class="fa fa-check disabled valid me-4 pe-3 font-12 color-green-dark"></i>
+        <i class="fa fa-check disabled invalid me-4 pe-3 font-12 color-red-dark"></i>
+      </div>
+      <a href="#" class="close-menu btn btn-m text-uppercase font-700 btn-full bg-blue-dark rounded-sm mt-4 mb-4">Call
+        me for Booking</a>
+    </div>
+  </div>
+
+  <div id="menu-settings" class="menu menu-box-bottom menu-box-detached">
+    <div class="menu-title mt-0 pt-0">
+      <h1>Settings</h1>
+      <p class="color-highlight">Flexible and Easy to Use</p>
+      <a href="#" class="close-menu"><i class="fa fa-times"></i></a>
+    </div>
+    <div class="divider divider-margins mb-n2"></div>
+    <div class="content">
+      <div class="list-group list-custom-small">
+        <a href="#" data-toggle-theme data-trigger-switch="switch-dark-mode" class="pb-2 ms-n1">
+          <i class="fa font-12 fa-moon rounded-s bg-highlight color-white me-3"></i>
+          <span>Dark Mode</span>
+          <div class="custom-control scale-switch ios-switch">
+            <input data-toggle-theme type="checkbox" class="ios-input" id="switch-dark-mode" />
+            <label class="custom-control-label" for="switch-dark-mode"></label>
+          </div>
+          <i class="fa fa-angle-right"></i>
+        </a>
+      </div>
+    </div>
+  </div>
+
+
+  <div id="menu-share" class="menu menu-box-bottom menu-box-detached">
+    <div class="menu-title mt-n1">
+      <h1>Share the Love</h1>
+      <p class="color-highlight">Just Tap the Social Icon. We'll add the Link</p><a href="#" class="close-menu"><i
+          class="fa fa-times"></i></a>
+    </div>
+    <div class="content mb-0">
+      <div class="divider mb-0"></div>
+      <div class="list-group list-custom-small list-icon-0">
+        <a href="auto_generated" class="shareToFacebook external-link">
+          <i class="font-18 fab fa-facebook-square color-facebook"></i>
+          <span class="font-13">Facebook</span>
+          <i class="fa fa-angle-right"></i>
+        </a>
+        <a href="auto_generated" class="shareToTwitter external-link">
+          <i class="font-18 fab fa-twitter-square color-twitter"></i>
+          <span class="font-13">Twitter</span>
+          <i class="fa fa-angle-right"></i>
+        </a>
+        <a href="auto_generated" class="shareToLinkedIn external-link">
+          <i class="font-18 fab fa-linkedin color-linkedin"></i>
+          <span class="font-13">LinkedIn</span>
+          <i class="fa fa-angle-right"></i>
+        </a>
+        <a href="auto_generated" class="shareToWhatsApp external-link">
+          <i class="font-18 fab fa-whatsapp-square color-whatsapp"></i>
+          <span class="font-13">WhatsApp</span>
+          <i class="fa fa-angle-right"></i>
+        </a>
+        <a href="auto_generated" class="shareToMail external-link border-0">
+          <i class="font-18 fa fa-envelope-square color-mail"></i>
+          <span class="font-13">Email</span>
+          <i class="fa fa-angle-right"></i>
+        </a>
+      </div>
+    </div>
+  </div>
+
+  </div>
+
+  <!-- Bootstrap JS (keeping for compatibility) -->
+  <script type="text/javascript" src="/scripts/bootstrap.min.js"></script>
+
+  <!-- Supabase SDK (if needed) -->
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+
+  <!-- Main application entry point (ES modules) -->
+  <script type="module" src="/src/main.js"></script>
+
+  <!-- ComparisonPage feature module -->
+  <script type="module">
+    import { initComparisonPage } from './comparisonPage.js';
+
+    document.addEventListener("DOMContentLoaded", function () {
+      // Initialize ComparisonPage features
+      initComparisonPage();
+    });
+  </script>
+</body>

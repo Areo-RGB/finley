@@ -1,0 +1,446 @@
+// ComparisonPage Feature Styles
+// Styles for before-after slider, video comparison controls, and synchronization interface
+
+/* Before-After Slider Container */
+#before-after-slider {
+  position: relative;
+  overflow: hidden;
+  border-radius: $border-radius-lg;
+  background: #000;
+  height: 400px;
+  cursor: grab;
+
+  &:active {
+    cursor: grabbing;
+  }
+
+  /* Before Image/Video Container */
+  #before-image {
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 100%;
+    width: 50%; // Default to center
+    overflow: hidden;
+    z-index: 2;
+
+    img,
+    video {
+      position: absolute;
+      top: 0;
+      left: 0;
+      height: 100%;
+      object-fit: cover;
+      pointer-events: none;
+      user-select: none;
+    }
+  }
+
+  /* After Image/Video Container */
+  #after-image {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 1;
+
+    img,
+    video {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      pointer-events: none;
+      user-select: none;
+    }
+  }
+
+  /* Resizer Handle */
+  #resizer {
+    position: absolute;
+    top: 0;
+    left: 50%; // Default to center
+    width: 4px;
+    height: 100%;
+    background: rgba(255, 255, 255, 0.8);
+    cursor: ew-resize;
+    z-index: 10;
+    transition: all 0.2s ease;
+
+    &::before {
+      content: '';
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      width: 20px;
+      height: 20px;
+      background: rgba(255, 255, 255, 0.9);
+      border-radius: 50%;
+      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
+    }
+
+    &::after {
+      content: '⟷';
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      color: #333;
+      font-size: 12px;
+      font-weight: bold;
+      z-index: 1;
+    }
+
+    &.resize {
+      background: rgba(255, 255, 255, 1);
+      width: 6px;
+
+      &::before {
+        background: rgba(255, 255, 255, 1);
+        width: 24px;
+        height: 24px;
+        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.4);
+      }
+    }
+
+    &:hover {
+      background: rgba(255, 255, 255, 1);
+
+      &::before {
+        background: rgba(255, 255, 255, 1);
+        transform: translate(-50%, -50%) scale(1.1);
+      }
+    }
+  }
+}
+
+/* Video Control Buttons */
+.video-control-section {
+  .video-control-btn {
+    @include button-variant($primary-blue);
+    font-size: 0.9rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    border-radius: $border-radius-base;
+    padding: $spacing-3 $spacing-4;
+    transition: all 0.3s ease;
+
+    &:hover {
+      transform: translateY(-2px);
+      box-shadow: $shadow-lg;
+    }
+
+    &:active {
+      transform: translateY(0);
+    }
+
+    i {
+      margin-right: $spacing-2;
+      font-size: 1rem;
+    }
+
+    &.before-control {
+      background: $primary-blue;
+
+      &:hover {
+        background: darken($primary-blue, 10%);
+      }
+    }
+
+    &.after-control {
+      background: $primary-blue-dark;
+
+      &:hover {
+        background: darken($primary-blue-dark, 10%);
+      }
+    }
+  }
+}
+
+/* Speed Control Buttons */
+.speed-control-section {
+  h6 {
+    color: inherit;
+    font-weight: 600;
+    margin-bottom: $spacing-3;
+    font-size: 0.9rem;
+  }
+
+  .speed-btn {
+    @include button-base;
+    background: $gray-600;
+    color: white;
+    font-size: 0.8rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    border-radius: $border-radius-base;
+    padding: $spacing-2 $spacing-3;
+    transition: all 0.3s ease;
+    margin-bottom: $spacing-2;
+
+    &:hover {
+      background: darken($gray-600, 10%);
+      transform: translateY(-1px);
+    }
+
+    &.active-speed {
+      background: $green-dark !important;
+      color: white !important;
+      box-shadow: $shadow-md;
+
+      &:hover {
+        background: darken($green-dark, 10%) !important;
+      }
+    }
+
+    &.sync-btn {
+      background: $red-dark;
+      color: white;
+
+      &:hover {
+        background: darken($red-dark, 10%);
+      }
+
+      i {
+        margin-right: $spacing-1;
+        font-size: 0.8rem;
+      }
+    }
+  }
+}
+
+/* Comparison Labels */
+.comparison-labels {
+  position: absolute;
+  top: 15px;
+  left: 0;
+  right: 0;
+  z-index: 15;
+  pointer-events: none;
+
+  .before-label {
+    position: absolute;
+    left: 15px;
+    background: rgba(0, 0, 0, 0.7);
+    color: white;
+    padding: $spacing-1 $spacing-3;
+    border-radius: $border-radius-base;
+    font-size: 0.8rem;
+    font-weight: 600;
+    backdrop-filter: blur(5px);
+  }
+
+  .after-label {
+    position: absolute;
+    right: 15px;
+    background: rgba(0, 0, 0, 0.7);
+    color: white;
+    padding: $spacing-1 $spacing-3;
+    border-radius: $border-radius-base;
+    font-size: 0.8rem;
+    font-weight: 600;
+    backdrop-filter: blur(5px);
+  }
+}
+
+/* Sync Status Indicator */
+.sync-status {
+  position: absolute;
+  bottom: 15px;
+  left: 50%;
+  transform: translateX(-50%);
+  background: rgba(0, 0, 0, 0.8);
+  color: white;
+  padding: $spacing-1 $spacing-3;
+  border-radius: $border-radius-lg;
+  font-size: 0.7rem;
+  font-weight: 600;
+  z-index: 15;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+
+  &.show {
+    opacity: 1;
+  }
+
+  &.synced {
+    background: rgba($green-dark, 0.9);
+  }
+
+  &.out-of-sync {
+    background: rgba($red-dark, 0.9);
+  }
+}
+
+/* Progress Indicators */
+.video-progress {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 4px;
+  background: rgba(255, 255, 255, 0.2);
+  z-index: 5;
+
+  .before-progress {
+    position: absolute;
+    left: 0;
+    top: 0;
+    height: 100%;
+    background: $primary-blue;
+    width: 0%;
+    transition: width 0.1s ease;
+  }
+
+  .after-progress {
+    position: absolute;
+    right: 0;
+    top: 0;
+    height: 100%;
+    background: $primary-blue-dark;
+    width: 0%;
+    transition: width 0.1s ease;
+  }
+}
+
+/* Responsive Design */
+@include respond-below(md) {
+  #before-after-slider {
+    height: 300px;
+
+    #resizer {
+      width: 6px;
+
+      &::before {
+        width: 24px;
+        height: 24px;
+      }
+
+      &::after {
+        font-size: 14px;
+      }
+    }
+  }
+
+  .video-control-section {
+    .video-control-btn {
+      font-size: 0.8rem;
+      padding: $spacing-2 $spacing-3;
+
+      i {
+        margin-right: $spacing-1;
+        font-size: 0.9rem;
+      }
+    }
+  }
+
+  .speed-control-section {
+    .speed-btn {
+      font-size: 0.7rem;
+      padding: $spacing-1 $spacing-2;
+    }
+  }
+
+  .comparison-labels {
+    top: 10px;
+
+    .before-label,
+    .after-label {
+      font-size: 0.7rem;
+      padding: $spacing-1 $spacing-2;
+    }
+
+    .before-label {
+      left: 10px;
+    }
+
+    .after-label {
+      right: 10px;
+    }
+  }
+}
+
+@include respond-below(sm) {
+  #before-after-slider {
+    height: 250px;
+  }
+
+  .video-control-section {
+    .row {
+      margin-bottom: $spacing-3;
+    }
+  }
+
+  .speed-control-section {
+    .speed-btn {
+      margin-bottom: $spacing-1;
+    }
+  }
+}
+
+/* Dark Theme Adjustments */
+@include theme-dark {
+  .speed-control-section {
+    h6 {
+      color: $theme-dark-text;
+    }
+  }
+
+  .comparison-labels {
+    .before-label,
+    .after-label {
+      background: rgba(0, 0, 0, 0.8);
+      border: 1px solid rgba(255, 255, 255, 0.1);
+    }
+  }
+}
+
+/* Light Theme Adjustments */
+@include theme-light {
+  .speed-control-section {
+    h6 {
+      color: $theme-light-text;
+    }
+  }
+
+  .comparison-labels {
+    .before-label,
+    .after-label {
+      background: rgba(255, 255, 255, 0.9);
+      color: $theme-light-text;
+      border: 1px solid rgba(0, 0, 0, 0.1);
+    }
+  }
+}
+
+/* Touch-friendly improvements */
+@media (hover: none) and (pointer: coarse) {
+  #before-after-slider {
+    #resizer {
+      width: 8px;
+
+      &::before {
+        width: 28px;
+        height: 28px;
+      }
+    }
+  }
+
+  .video-control-section .video-control-btn:hover,
+  .speed-control-section .speed-btn:hover {
+    transform: none;
+    box-shadow: none;
+  }
+}
+
+/* Animation for sync feedback */
+@keyframes syncPulse {
+  0% { transform: translateX(-50%) scale(1); }
+  50% { transform: translateX(-50%) scale(1.1); }
+  100% { transform: translateX(-50%) scale(1); }
+}
+
+.sync-status.synced {
+  animation: syncPulse 0.6s ease;
+}

@@ -1,0 +1,1428 @@
+<!DOCTYPE HTML>
+<html lang="en">
+
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+  <meta name="mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black">
+  <meta name="viewport"
+    content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1, viewport-fit=cover" />
+  <meta name="theme-color" content="#1b1d21" media="(prefers-color-scheme: dark)">
+  <meta name="theme-color" content="#ffffff" media="(prefers-color-scheme: light)">
+  <title>DFB Training - QuoVadis</title>
+  <!-- Main SCSS entry point (Vite will process this) -->
+  <link rel="stylesheet" type="text/css" href="/src/assets/styles/main.scss">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&family=Source+Sans+Pro:wght@400;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" integrity="sha512-SnH5WK+bZxgPHs44uWIX+LLJAJ9/2PkPKZ5QiAj6Ta86w+fsb2TkcmfRyVX3pBnMFcV7oQPJkl9QevSCWr3W6A==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+  <link rel="manifest" href="manifest.json" data-pwa-version="set_in_manifest_and_pwa_js">
+  <link rel="apple-touch-icon" sizes="180x180" href="app/icons/icon-192x192.png">
+
+  <!-- DNS prefetch for video CDN -->
+  <link rel="dns-prefetch" href="//data3.fra1.cdn.digitaloceanspaces.com">
+</head>
+
+<body class="theme-dark" data-highlight="highlight-blue" data-gradient="body-default">
+
+  <div id="preloader">
+    <div class="spinner-border color-highlight" role="status"></div>
+  </div>
+
+  <div id="page">
+    <div id="footer-bar" class="footer-bar-1">
+      <a href="page-Vergleich.html"><i class="fa fa-chart-bar"></i><span>Vergleich</span></a>
+      <a href="page-profile-finley.html"><i class="fa fa-futbol"></i><span>Training</span></a>
+      <a href="index.html"><i class="fa fa-home"></i><span>Home</span></a>
+      <a href="page-videos.html" class="active-nav"><i class="fa fa-video"></i><span>Videos</span></a>
+      <a href="#" data-menu="menu-settings"><i class="fa fa-cog"></i><span>Settings</span></a>
+    </div>
+
+    <div class="page-content">
+      <!-- Main Content Card -->
+      <div class="page-content header-clear-small">
+
+        <div class="content mt-n1">
+
+
+
+          <div class="content mb-0" id="tab-group-listing">
+            <div class="card card-style mx-0 mb-3">
+              <div class="tab-controls" data-highlight="color-blue-dark">
+                <a href="#" class="no-effect font-15 font-600 py-2 border-0" data-active data-bs-toggle="collapse"
+                  data-bs-target="#tab-1">
+                  <span class="d-flex justify-content-center align-items-center h-100 py-3">
+                    <img src="https://yjigvfwnka1wr4cl.public.blob.vercel-storage.com/logos/DFB-Logo-5rGeyfKZKJPKgD7OknUAIgOldmB68v.svg" alt="DFB Logo" class="dfb-tab-logo">
+                  </span>
+                </a>
+              </div>
+            </div>
+            <!-- Card Style-->
+            <div data-bs-parent="#tab-group-listing" class="collapse show" id="tab-1">
+              <div class="card card-style mx-0">
+                <!-- Swipeable Video Card Container -->
+                <div class="swipe-card-container" style="position: relative; overflow: hidden;">
+                  <!-- Card 1 - 10m Sprint -->
+                  <div class="swipe-card active" data-card-index="0">
+                    <div class="card card-style mx-2 mt-2 video-card-container" data-card-height="170">
+                      <!-- Video Background -->
+                      <video class="card-video-bg" muted loop preload="metadata"
+                        poster="thumbnails/DJI_20250511155856_0068_D.jpg">
+                        <source src="https://data3.fra1.cdn.digitaloceanspaces.com/DJI_20250511155856_0068_D.mp4"
+                          type="video/mp4">
+                      </video>
+
+                      <div class="card-top p-3">
+                        <div class="float-start">
+                          <span class="bg-theme color-theme px-2 py-2 rounded-sm">
+                            <i class="fa fa-clock color-blue-dark pe-1"></i>
+                            2.00 s
+                          </span>
+                        </div>
+                      </div>
+                      <div class="card-bottom p-3 pb-2">
+                        <h2 class="color-white">10m Sprint</h2>
+                      </div>
+                      <div class="card-overlay bg-gradient opacity-70"></div>
+                    </div>
+                    <div class="content mt-n3">
+                      <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut
+                        labore
+                        et dolore magna aliqua.</p>
+                      <div class="divider mt-n3 mb-3"></div>
+                      <div class="d-flex">
+                        <div class="align-self-center">
+                          <span>
+                            <i class="fa fa-star font-12 color-yellow-dark pe-1"></i>
+                            <i class="fa fa-star font-12 color-yellow-dark pe-1"></i>
+                            <i class="fa fa-star font-12 color-yellow-dark pe-1"></i>
+                            <i class="fa fa-star font-12 color-yellow-dark pe-1"></i>
+                            <i class="fa fa-star font-12 color-yellow-dark pe-1"></i>
+                          </span>
+                        </div>
+                        <div class="align-self-center ms-auto">
+                          <a href="#" class="btn btn-s bg-green-dark rounded-sm font-700 text-uppercase play-now-btn"
+                            data-video-src="https://data3.fra1.cdn.digitaloceanspaces.com/DJI_20250511155856_0068_D.mp4">Play
+                            Now</a>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+
+                  <!-- Card 2 - Alternative 10m Sprint -->
+                  <div class="swipe-card" data-card-index="1">
+                    <div class="card card-style mx-2 mt-2 video-card-container" data-card-height="170">
+                      <!-- Video Background -->
+                      <video class="card-video-bg" muted loop preload="metadata"
+                        poster="thumbnails/DJI_20250511155856_0068_D.jpg">
+                        <source src="https://data3.fra1.cdn.digitaloceanspaces.com/DJI_20250511155856_0068_D.mp4"
+                          type="video/mp4">
+                      </video>
+
+                      <div class="card-top p-3">
+                        <div class="float-start">
+                          <span class="bg-theme color-theme px-2 py-2 rounded-sm">
+                            <i class="fa fa-clock color-blue-dark pe-1"></i>
+                            1.95 s
+                          </span>
+                        </div>
+                      </div>
+                      <div class="card-bottom p-3 pb-2">
+                        <h2 class="color-white">10m Sprint Pro</h2>
+                      </div>
+                      <div class="card-overlay bg-gradient opacity-70"></div>
+                    </div>
+                    <div class="content mt-n3">
+                      <p>Advanced sprint technique with professional coaching tips. Perfect your form and achieve faster
+                        times with this enhanced training method.</p>
+                      <div class="divider mt-n3 mb-3"></div>
+                      <div class="d-flex">
+                        <div class="align-self-center">
+                          <span>
+                            <i class="fa fa-star font-12 color-yellow-dark pe-1"></i>
+                            <i class="fa fa-star font-12 color-yellow-dark pe-1"></i>
+                            <i class="fa fa-star font-12 color-yellow-dark pe-1"></i>
+                            <i class="fa fa-star font-12 color-yellow-dark pe-1"></i>
+                            <i class="fa fa-star font-12 color-yellow-dark pe-1"></i>
+                          </span>
+                        </div>
+                        <div class="align-self-center ms-auto">
+                          <a href="#" class="btn btn-s bg-green-dark rounded-sm font-700 text-uppercase play-now-btn"
+                            data-video-src="https://data3.fra1.cdn.digitaloceanspaces.com/DJI_20250511155856_0068_D.mp4">Play
+                            Now</a>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+
+                  <!-- Swipe Indicators -->
+                  <div class="swipe-indicators" style="
+                    position: absolute;
+                    bottom: 10px;
+                    right: 15px;
+                    z-index: 4;
+                    display: flex;
+                    gap: 6px;
+                  ">
+                    <div class="indicator active" data-card="0" style="
+                      width: 6px;
+                      height: 6px;
+                      border-radius: 50%;
+                      background: rgba(255, 255, 255, 0.8);
+                      cursor: pointer;
+                      transition: all 0.3s ease;
+                    "></div>
+                    <div class="indicator" data-card="1" style="
+                      width: 6px;
+                      height: 6px;
+                      border-radius: 50%;
+                      background: rgba(255, 255, 255, 0.3);
+                      cursor: pointer;
+                      transition: all 0.3s ease;
+                    "></div>
+                  </div>
+                </div>
+              </div>
+              <div class="card card-style mx-0">
+                <!-- Swipeable Video Card Container -->
+                <div class="swipe-card-container" style="position: relative; overflow: hidden;">
+                  <!-- Card 1 - 20m Sprint -->
+                  <div class="swipe-card active" data-card-index="0">
+                    <div class="card card-style mx-2 mt-2 video-card-container" data-card-height="170">
+                      <!-- Video Background -->
+                      <video class="card-video-bg" muted loop preload="metadata"
+                        poster="thumbnails/DJI_20250511155856_0068_D.jpg">
+                        <source src="https://data3.fra1.cdn.digitaloceanspaces.com/DJI_20250511155856_0068_D.mp4"
+                          type="video/mp4">
+                      </video>
+
+                      <div class="card-top p-3">
+                        <div class="float-start">
+                          <span class="bg-theme color-theme px-2 py-2 rounded-sm">
+                            <i class="fa fa-clock color-blue-dark pe-1"></i>
+                            3.59 s
+                          </span>
+                        </div>
+                      </div>
+                      <div class="card-bottom p-3 pb-2">
+                        <h2 class="color-white">20m Sprint</h2>
+                      </div>
+                      <div class="card-overlay bg-gradient opacity-70"></div>
+                    </div>
+                    <div class="content mt-n3">
+                      <p>
+                        Sprints are incredibly complex and hard to achieve, especially for a beginner. Do you have what
+                        it
+                        takes?
+                      </p>
+                      <div class="divider mt-n3 mb-3"></div>
+                      <div class="d-flex">
+                        <div class="align-self-center">
+                          <span>
+                            <i class="fa fa-star font-12 color-yellow-dark pe-1"></i>
+                            <i class="fa fa-star font-12 color-yellow-dark pe-1"></i>
+                            <i class="fa fa-star font-12 color-yellow-dark pe-1"></i>
+                            <i class="fa fa-star font-12 color-yellow-dark pe-1"></i>
+                            <i class="fa fa-star-o font-12 color-white pe-1"></i>
+                          </span>
+                        </div>
+                        <div class="align-self-center ms-auto">
+                          <a href="#" class="btn btn-s bg-green-dark rounded-sm font-700 text-uppercase play-now-btn"
+                            data-video-src="https://data3.fra1.cdn.digitaloceanspaces.com/DJI_20250511155856_0068_D.mp4">Play
+                            Now</a>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+
+                  <!-- Card 2 - Alternative 20m Sprint -->
+                  <div class="swipe-card" data-card-index="1">
+                    <div class="card card-style mx-2 mt-2 video-card-container" data-card-height="170">
+                      <!-- Video Background -->
+                      <video class="card-video-bg" muted loop preload="metadata"
+                        poster="thumbnails/DJI_20250511155856_0068_D.jpg">
+                        <source src="https://data3.fra1.cdn.digitaloceanspaces.com/DJI_20250511155856_0068_D.mp4"
+                          type="video/mp4">
+                      </video>
+
+                      <div class="card-top p-3">
+                        <div class="float-start">
+                          <span class="bg-theme color-theme px-2 py-2 rounded-sm">
+                            <i class="fa fa-clock color-blue-dark pe-1"></i>
+                            3.42 s
+                          </span>
+                        </div>
+                      </div>
+                      <div class="card-bottom p-3 pb-2">
+                        <h2 class="color-white">20m Sprint Elite</h2>
+                      </div>
+                      <div class="card-overlay bg-gradient opacity-70"></div>
+                    </div>
+                    <div class="content mt-n3">
+                      <p>
+                        Elite-level 20m sprint training with advanced techniques. Master explosive starts and maintain
+                        top speed throughout the distance.
+                      </p>
+                      <div class="divider mt-n3 mb-3"></div>
+                      <div class="d-flex">
+                        <div class="align-self-center">
+                          <span>
+                            <i class="fa fa-star font-12 color-yellow-dark pe-1"></i>
+                            <i class="fa fa-star font-12 color-yellow-dark pe-1"></i>
+                            <i class="fa fa-star font-12 color-yellow-dark pe-1"></i>
+                            <i class="fa fa-star font-12 color-yellow-dark pe-1"></i>
+                            <i class="fa fa-star font-12 color-yellow-dark pe-1"></i>
+                          </span>
+                        </div>
+                        <div class="align-self-center ms-auto">
+                          <a href="#" class="btn btn-s bg-green-dark rounded-sm font-700 text-uppercase play-now-btn"
+                            data-video-src="https://data3.fra1.cdn.digitaloceanspaces.com/DJI_20250511155856_0068_D.mp4">Play
+                            Now</a>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+
+                  <!-- Swipe Indicators -->
+                  <div class="swipe-indicators" style="
+                    position: absolute;
+                    bottom: 10px;
+                    right: 15px;
+                    z-index: 4;
+                    display: flex;
+                    gap: 6px;
+                  ">
+                    <div class="indicator active" data-card="0" style="
+                      width: 6px;
+                      height: 6px;
+                      border-radius: 50%;
+                      background: rgba(255, 255, 255, 0.8);
+                      cursor: pointer;
+                      transition: all 0.3s ease;
+                    "></div>
+                    <div class="indicator" data-card="1" style="
+                      width: 6px;
+                      height: 6px;
+                      border-radius: 50%;
+                      background: rgba(255, 255, 255, 0.3);
+                      cursor: pointer;
+                      transition: all 0.3s ease;
+                    "></div>
+                  </div>
+                </div>
+              </div>
+              <div class="card card-style mx-0">
+                <div class="card card-style mx-2 mt-2 video-card-container" data-card-height="170">
+                  <!-- Video Background -->
+                  <video class="card-video-bg" muted loop preload="metadata"
+                    poster="thumbnails/DJI_20250511155856_0068_D.jpg">
+                    <source src="https://data3.fra1.cdn.digitaloceanspaces.com/DJI_20250511155856_0068_D.mp4"
+                      type="video/mp4">
+                  </video>
+
+                  <div class="card-top p-3">
+                    <div class="float-start">
+                      <span class="bg-theme color-theme px-2 py-2 rounded-sm">
+                        <i class="fa fa-clock color-blue-dark pe-1"></i>
+                        7.81 s
+                      </span>
+                    </div>
+                  </div>
+                  <div class="card-bottom p-3 pb-2">
+                    <h2 class="color-white">Gewandtheit</h2>
+                  </div>
+                  <div class="card-overlay bg-gradient opacity-70"></div>
+
+
+                </div>
+                <div class="content mt-n3">
+                  <p>Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia curae; Mauris
+                    viverra veniam sit amet lacus.</p>
+                  <div class="divider mt-n3 mb-3"></div>
+                  <div class="d-flex">
+                    <div class="align-self-center">
+                      <span>
+                        <i class="fa fa-star font-12 color-yellow-dark pe-1"></i>
+                        <i class="fa fa-star font-12 color-yellow-dark pe-1"></i>
+                        <i class="fa fa-star font-12 color-yellow-dark pe-1"></i>
+                        <i class="fa fa-star font-12 color-yellow-dark pe-1"></i>
+                        <i class="fa fa-star font-12 color-yellow-dark pe-1"></i>
+                      </span>
+
+                    </div>
+                    <div class="align-self-center ms-auto">
+                      <a href="#" class="btn btn-s bg-green-dark rounded-sm font-700 text-uppercase play-now-btn"
+                        data-video-src="https://data3.fra1.cdn.digitaloceanspaces.com/DJI_20250511155856_0068_D.mp4">Play
+                        Now</a>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="card card-style mx-0">
+                <div class="card card-style mx-2 mt-2 video-card-container" data-card-height="170">
+                  <!-- Video Background -->
+                  <video class="card-video-bg" muted loop preload="metadata"
+                    poster="thumbnails/DJI_20250511155856_0068_D.jpg">
+                    <source src="https://data3.fra1.cdn.digitaloceanspaces.com/DJI_20250511155856_0068_D.mp4"
+                      type="video/mp4">
+                  </video>
+
+                  <div class="card-top p-3">
+                    <div class="float-start">
+                      <span class="bg-theme color-theme px-2 py-2 rounded-sm">
+                        <i class="fa fa-clock color-blue-dark pe-1"></i>
+                        10.82 s
+                      </span>
+                    </div>
+                  </div>
+                  <div class="card-bottom p-3 pb-2">
+                    <h2 class="color-white">Ballkontrolle</h2>
+                  </div>
+                  <div class="card-overlay bg-gradient opacity-70"></div>
+
+
+                </div>
+                <div class="content mt-n3">
+                  <p>Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Proin
+                    pharetra nonummy pede.</p>
+                  <div class="divider mt-n3 mb-3"></div>
+                  <div class="d-flex">
+                    <div class="align-self-center">
+                      <span>
+                        <i class="fa fa-star font-12 color-yellow-dark pe-1"></i>
+                        <i class="fa fa-star font-12 color-yellow-dark pe-1"></i>
+                        <i class="fa fa-star font-12 color-yellow-dark pe-1"></i>
+                        <i class="fa fa-star font-12 color-yellow-dark pe-1"></i>
+                        <i class="fa fa-star font-12 color-yellow-dark pe-1"></i>
+                      </span>
+
+                    </div>
+                    <div class="align-self-center ms-auto">
+                      <a href="#" class="btn btn-s bg-green-dark rounded-sm font-700 text-uppercase play-now-btn"
+                        data-video-src="https://data3.fra1.cdn.digitaloceanspaces.com/DJI_20250511155856_0068_D.mp4">Play
+                        Now</a>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="card card-style mx-0">
+                <div class="card card-style mx-2 mt-2 video-card-container" data-card-height="170">
+                  <!-- Video Background -->
+                  <video class="card-video-bg" muted loop preload="metadata"
+                    poster="thumbnails/DJI_20250511155856_0068_D.jpg">
+                    <source src="https://data3.fra1.cdn.digitaloceanspaces.com/DJI_20250511155856_0068_D.mp4"
+                      type="video/mp4">
+                  </video>
+
+                  <div class="card-top p-3">
+                    <div class="float-start">
+                      <span class="bg-theme color-theme px-2 py-2 rounded-sm">
+                        <i class="fa fa-clock color-blue-dark pe-1"></i>
+                        0.00 P
+                      </span>
+                    </div>
+                  </div>
+                  <div class="card-bottom p-3 pb-2">
+                    <h2 class="color-white">Balljonglieren</h2>
+                  </div>
+                  <div class="card-overlay bg-gradient opacity-70"></div>
+
+
+                </div>
+                <div class="content mt-n3">
+                  <p>Donec quam felis, ultricies nec, pellentesque eu, pretium quis, sem. Nulla consequat massa quis
+                    enim donec pede justo.</p>
+                  <div class="divider mt-n3 mb-3"></div>
+                  <div class="d-flex">
+                    <div class="align-self-center">
+                      <span>
+                        <i class="fa fa-star-o font-12 color-white pe-1"></i>
+                        <i class="fa fa-star-o font-12 color-white pe-1"></i>
+                        <i class="fa fa-star-o font-12 color-white pe-1"></i>
+                        <i class="fa fa-star-o font-12 color-white pe-1"></i>
+                        <i class="fa fa-star-o font-12 color-white pe-1"></i>
+                      </span>
+
+                    </div>
+                    <div class="align-self-center ms-auto">
+                      <a href="#" class="btn btn-s bg-green-dark rounded-sm font-700 text-uppercase play-now-btn"
+                        data-video-src="https://data3.fra1.cdn.digitaloceanspaces.com/DJI_20250511155856_0068_D.mp4">Play
+                        Now</a>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="card card-style mx-0">
+                <div class="card card-style mx-2 mt-2 video-card-container" data-card-height="170">
+                  <!-- Video Background -->
+                  <video class="card-video-bg" muted loop preload="metadata"
+                    poster="thumbnails/DJI_20250511155856_0068_D.jpg">
+                    <source src="https://data3.fra1.cdn.digitaloceanspaces.com/DJI_20250511155856_0068_D.mp4"
+                      type="video/mp4">
+                  </video>
+
+                  <div class="card-top p-3">
+                    <div class="float-start">
+                      <span class="bg-theme color-theme px-2 py-2 rounded-sm">
+                        <i class="fa fa-clock color-blue-dark pe-1"></i>
+                        10.27 s
+                      </span>
+                    </div>
+                  </div>
+                  <div class="card-bottom p-3 pb-2">
+                    <h2 class="color-white">Dribbling</h2>
+                  </div>
+                  <div class="card-overlay bg-gradient opacity-70"></div>
+
+
+                </div>
+                <div class="content mt-n3">
+                  <p>Aenean imperdiet. Etiam ultricies nisi vel augue. Curabitur ullamcorper ultricies nisi nam eget dui
+                    etiam rhoncus maecenas.</p>
+                  <div class="divider mt-n3 mb-3"></div>
+                  <div class="d-flex">
+                    <div class="align-self-center">
+                      <span>
+                        <i class="fa fa-star font-12 color-yellow-dark pe-1"></i>
+                        <i class="fa fa-star font-12 color-yellow-dark pe-1"></i>
+                        <i class="fa fa-star font-12 color-yellow-dark pe-1"></i>
+                        <i class="fa fa-star font-12 color-yellow-dark pe-1"></i>
+                        <i class="fa fa-star-o font-12 color-white pe-1"></i>
+                      </span>
+
+                    </div>
+                    <div class="align-self-center ms-auto">
+                      <a href="#" class="btn btn-s bg-green-dark rounded-sm font-700 text-uppercase play-now-btn"
+                        data-video-src="https://data3.fra1.cdn.digitaloceanspaces.com/DJI_20250511155856_0068_D.mp4">Play
+                        Now</a>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+
+            </div>
+            <!-- List View-->
+            <!-- 2x2 Grid View -->
+          </div>
+        </div>
+        <!-- End of Page Content-->
+
+        <!-- All Menus, Action Sheets, Modals, Notifications, Toasts, Snackbars get Placed outside the <div class="page-content"> -->
+        <div id="menu-settings" class="menu menu-box-bottom menu-box-detached">
+          <div class="menu-title mt-0 pt-0">
+            <h1>Settings</h1>
+            <p class="color-highlight">Flexible and Easy to Use</p><a href="#" class="close-menu"><i
+                class="fa fa-times"></i></a>
+          </div>
+          <div class="divider divider-margins mb-n2"></div>
+          <div class="content">
+            <div class="list-group list-custom-small">
+              <a href="#" data-toggle-theme data-trigger-switch="switch-dark-mode" class="pb-2 ms-n1">
+                <i class="fa font-12 fa-moon rounded-s bg-highlight color-white me-3"></i>
+                <span>Dark Mode</span>
+                <div class="custom-control scale-switch ios-switch">
+                  <input data-toggle-theme type="checkbox" class="ios-input" id="switch-dark-mode">
+                  <label class="custom-control-label" for="switch-dark-mode"></label>
+                </div>
+                <i class="fa fa-angle-right"></i>
+              </a>
+              <a href="#" id="fullscreen-toggle" class="pb-2 ms-n1">
+                <i class="fa font-12 fa-expand rounded-s bg-blue-dark color-white me-3"></i>
+                <span>Fullscreen Mode</span>
+                <div class="custom-control scale-switch ios-switch">
+                  <input type="checkbox" class="ios-input" id="switch-fullscreen-mode">
+                  <label class="custom-control-label" for="switch-fullscreen-mode"></label>
+                </div>
+                <i class="fa fa-angle-right"></i>
+              </a>
+            </div>
+            <div class="list-group list-custom-large">
+              <!-- <a data-menu="menu-highlights" href="#">
+                    <i class="fa font-14 fa-tint bg-green-dark rounded-s"></i>
+                    <span>Page Highlight</span>
+                    <strong>16 Colors Highlights Included</strong>
+                    <span class="badge bg-highlight color-white">HOT</span>
+                    <i class="fa fa-angle-right"></i>
+                </a>
+                <a data-menu="menu-backgrounds" href="#" class="border-0">
+                    <i class="fa font-14 fa-cog bg-blue-dark rounded-s"></i>
+                    <span>Background Color</span>
+                    <strong>10 Page Gradients Included</strong>
+                    <span class="badge bg-highlight color-white">NEW</span>
+                    <i class="fa fa-angle-right"></i>
+                </a> -->
+            </div>
+          </div>
+        </div>
+        <!-- Menu Settings Highlights-->
+        <div id="menu-highlights" class="menu menu-box-bottom menu-box-detached">
+          <div class="menu-title">
+            <h1>Highlights</h1>
+            <p class="color-highlight">Any Element can have a Highlight Color</p><a href="#" class="close-menu"><i
+                class="fa fa-times"></i></a>
+          </div>
+          <div class="divider divider-margins mb-n2"></div>
+          <div class="content">
+            <div class="highlight-changer">
+              <a href="#" data-change-highlight="blue"><i class="fa fa-circle color-blue-dark"></i><span
+                  class="color-blue-light">Default</span></a>
+              <a href="#" data-change-highlight="red"><i class="fa fa-circle color-red-dark"></i><span
+                  class="color-red-light">Red</span></a>
+              <a href="#" data-change-highlight="orange"><i class="fa fa-circle color-orange-dark"></i><span
+                  class="color-orange-light">Orange</span></a>
+              <a href="#" data-change-highlight="pink2"><i class="fa fa-circle color-pink2-dark"></i><span
+                  class="color-pink-dark">Pink</span></a>
+              <a href="#" data-change-highlight="magenta"><i class="fa fa-circle color-magenta-dark"></i><span
+                  class="color-magenta-light">Purple</span></a>
+              <a href="#" data-change-highlight="aqua"><i class="fa fa-circle color-aqua-dark"></i><span
+                  class="color-aqua-light">Aqua</span></a>
+              <a href="#" data-change-highlight="teal"><i class="fa fa-circle color-teal-dark"></i><span
+                  class="color-teal-light">Teal</span></a>
+              <a href="#" data-change-highlight="mint"><i class="fa fa-circle color-mint-dark"></i><span
+                  class="color-mint-light">Mint</span></a>
+              <a href="#" data-change-highlight="green"><i class="fa fa-circle color-green-light"></i><span
+                  class="color-green-light">Green</span></a>
+              <a href="#" data-change-highlight="grass"><i class="fa fa-circle color-green-dark"></i><span
+                  class="color-green-dark">Grass</span></a>
+              <a href="#" data-change-highlight="sunny"><i class="fa fa-circle color-yellow-light"></i><span
+                  class="color-yellow-light">Sunny</span></a>
+              <a href="#" data-change-highlight="yellow"><i class="fa fa-circle color-yellow-dark"></i><span
+                  class="color-yellow-light">Goldish</span></a>
+              <a href="#" data-change-highlight="brown"><i class="fa fa-circle color-brown-dark"></i><span
+                  class="color-brown-light">Wood</span></a>
+              <a href="#" data-change-highlight="night"><i class="fa fa-circle color-dark-dark"></i><span
+                  class="color-dark-light">Night</span></a>
+              <a href="#" data-change-highlight="dark"><i class="fa fa-circle color-dark-light"></i><span
+                  class="color-dark-light">Dark</span></a>
+              <div class="clearfix"></div>
+            </div>
+            <a href="#" data-menu="menu-settings"
+              class="mb-3 btn btn-full btn-m rounded-sm bg-highlight shadow-xl text-uppercase font-900 mt-4">Back to
+              Settings</a>
+          </div>
+        </div>
+        <!-- Menu Settings Backgrounds-->
+        <div id="menu-backgrounds" class="menu menu-box-bottom menu-box-detached">
+          <div class="menu-title">
+            <h1>Backgrounds</h1>
+            <p class="color-highlight">Change Page Color Behind Content Boxes</p><a href="#" class="close-menu"><i
+                class="fa fa-times"></i></a>
+          </div>
+          <div class="divider divider-margins mb-n2"></div>
+          <div class="content">
+            <div class="background-changer">
+              <a href="#" data-change-background="default"><i class="bg-theme"></i><span
+                  class="color-dark-dark">Default</span></a>
+              <a href="#" data-change-background="plum"><i class="body-plum"></i><span
+                  class="color-plum-dark">Plum</span></a>
+              <a href="#" data-change-background="magenta"><i class="body-magenta"></i><span
+                  class="color-dark-dark">Magenta</span></a>
+              <a href="#" data-change-background="dark"><i class="body-dark"></i><span
+                  class="color-dark-dark">Dark</span></a>
+              <a href="#" data-change-background="violet"><i class="body-violet"></i><span
+                  class="color-violet-dark">Violet</span></a>
+              <a href="#" data-change-background="red"><i class="body-red"></i><span
+                  class="color-red-dark">Red</span></a>
+              <a href="#" data-change-background="green"><i class="body-green"></i><span
+                  class="color-green-dark">Green</span></a>
+              <a href="#" data-change-background="sky"><i class="body-sky"></i><span
+                  class="color-sky-dark">Sky</span></a>
+              <a href="#" data-change-background="orange"><i class="body-orange"></i><span
+                  class="color-orange-dark">Orange</span></a>
+              <a href="#" data-change-background="yellow"><i class="body-yellow"></i><span
+                  class="color-yellow-dark">Yellow</span></a>
+              <div class="clearfix"></div>
+            </div>
+            <a href="#" data-menu="menu-settings"
+              class="mb-3 btn btn-full btn-m rounded-sm bg-highlight shadow-xl text-uppercase font-900 mt-4">Back to
+              Settings</a>
+          </div>
+        </div>
+
+      </div>
+
+      <!-- Bootstrap JS (keeping for compatibility) -->
+      <script type="text/javascript" src="/scripts/bootstrap.min.js"></script>
+
+      <!-- Supabase SDK (if needed) -->
+      <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+
+      <!-- Main application entry point (ES modules) -->
+      <script type="module" src="/src/main.js"></script>
+
+      <!-- VideoGalleryPage feature module -->
+      <script type="module">
+        import { initVideoGalleryPage } from './videoGalleryPage.js';
+
+        document.addEventListener("DOMContentLoaded", function () {
+          // Initialize VideoGalleryPage features
+          initVideoGalleryPage();
+        });
+      </script>
+
+      <!-- Swipe Card Styles -->
+      <style>
+        /* DFB Logo Tab Icon */
+        .dfb-tab-logo {
+          width: 50px;
+          height: 50px;
+          transition: all 0.3s ease;
+        }
+
+        /* Dark theme - keep original colors but make it brighter */
+        .theme-dark .dfb-tab-logo {
+          filter: brightness(1.2) contrast(1.1);
+        }
+
+        /* Light theme - keep original colors */
+        .theme-light .dfb-tab-logo {
+          filter: brightness(0.9) contrast(1.1);
+        }
+
+        /* Active tab state */
+        .tab-controls a[data-active] .dfb-tab-logo {
+          transform: scale(1.1);
+        }
+
+        /* Hover effect */
+        .tab-controls a:hover .dfb-tab-logo {
+          transform: scale(1.05);
+        }
+
+        /* Swipe Card Container */
+        .swipe-card-container {
+          position: relative;
+          overflow: hidden;
+          touch-action: pan-y;
+          min-height: 400px;
+        }
+
+        /* Individual Swipe Cards */
+        .swipe-card {
+          position: absolute;
+          top: 0;
+          left: 0;
+          width: 100%;
+          height: 100%;
+          transform: translateX(100%);
+          transition: transform 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+          pointer-events: none;
+          opacity: 0;
+        }
+
+        .swipe-card.active {
+          transform: translateX(0);
+          pointer-events: all;
+          position: relative;
+          opacity: 1;
+          z-index: 2;
+        }
+
+        .swipe-card.prev {
+          transform: translateX(-100%);
+          opacity: 0;
+          z-index: 1;
+        }
+
+        .swipe-card.next {
+          transform: translateX(100%);
+          opacity: 0;
+          z-index: 1;
+        }
+
+        /* Swipe Indicators */
+        .swipe-indicators {
+          position: absolute !important;
+          bottom: 10px !important;
+          right: 15px !important;
+          z-index: 10 !important;
+        }
+
+        .swipe-indicators .indicator.active {
+          background: rgba(255, 255, 255, 0.9) !important;
+          transform: scale(1.2);
+        }
+
+        .swipe-indicators .indicator:hover {
+          background: rgba(255, 255, 255, 0.6) !important;
+          transform: scale(1.1);
+        }
+
+        /* Smooth transitions for swipe gestures */
+        .swipe-card-container.swiping .swipe-card {
+          transition: transform 0.1s ease-out;
+          opacity: 1;
+        }
+
+        /* Responsive adjustments */
+        @media (max-width: 768px) {
+          .swipe-indicators {
+            bottom: 15px !important;
+            right: 20px !important;
+          }
+
+          .swipe-indicators .indicator {
+            width: 8px !important;
+            height: 8px !important;
+          }
+        }
+      </style>
+
+      <!-- Video Card Hover-to-Play Functionality -->
+      <script>
+        document.addEventListener('DOMContentLoaded', function () {
+          initVideoCards();
+          initSettingsFullscreenToggle();
+          initSwipeCards();
+          initPlayNowButtons();
+
+          function initVideoCards() {
+            const videoCards = document.querySelectorAll('.video-card-container');
+
+            videoCards.forEach(function (card) {
+              const video = card.querySelector('.card-video-bg');
+              if (!video) return;
+
+              // Add loading state initially
+              card.classList.add('loading');
+
+              // Create handler functions for proper cleanup
+              const onLoadedData = function () {
+                card.classList.remove('loading');
+                console.log('✅ Video loaded successfully');
+              };
+
+              const onError = function () {
+                card.classList.remove('loading');
+                console.error('❌ Video failed to load:', video.src);
+                addVideoFallback(card);
+              };
+
+              const onMouseEnter = function () {
+                if (video.readyState >= 2) { // HAVE_CURRENT_DATA
+                  playVideo(video, card);
+                }
+              };
+
+              const onMouseLeave = function () {
+                pauseVideo(video, card);
+              };
+
+              const onTouchStart = function (e) {
+                // Don't prevent default if clicking on buttons or links
+                if (e.target.closest('.play-now-btn') || e.target.closest('a') || e.target.closest('button')) {
+                  return;
+                }
+                e.preventDefault();
+                e.stopPropagation();
+                if (video.readyState >= 2) {
+                  if (video.paused) {
+                    playVideo(video, card);
+                  } else {
+                    pauseVideo(video, card);
+                  }
+                }
+              };
+
+              // Handle video loading
+              video.addEventListener('loadeddata', function () {
+                card.classList.remove('loading');
+                console.log('✅ Video loaded successfully');
+              });
+
+              video.addEventListener('error', function () {
+                card.classList.remove('loading');
+                console.error('❌ Video failed to load:', video.src);
+                // Optionally add fallback image here
+                addVideoFallback(card);
+              });
+
+              // Hover to play functionality
+              card.addEventListener('mouseenter', function () {
+                if (video.readyState >= 2) { // HAVE_CURRENT_DATA
+                  playVideo(video, card);
+                }
+              });
+
+              card.addEventListener('mouseleave', function () {
+                pauseVideo(video, card);
+              });
+
+              // Touch support for mobile
+              card.addEventListener('touchstart', function (e) {
+                e.preventDefault();
+                if (video.readyState >= 2) {
+                  if (video.paused) {
+                    playVideo(video, card);
+                  } else {
+                    pauseVideo(video, card);
+                  }
+                }
+              });
+
+              // Preload video metadata
+              video.load();
+            });
+          }
+
+          function playVideo(video, card) {
+            try {
+              const playPromise = video.play();
+
+              if (playPromise !== undefined) {
+                playPromise
+                  .then(() => {
+                    card.classList.add('playing');
+                    console.log('▶️ Video playing');
+                  })
+                  .catch(error => {
+                    console.warn('⚠️ Video play failed:', error);
+                    // Handle autoplay restrictions silently
+                  });
+              }
+            } catch (error) {
+              console.error('❌ Video play error:', error);
+            }
+          }
+
+          function pauseVideo(video, card) {
+            try {
+              video.pause();
+              video.currentTime = 0; // Reset to beginning
+              card.classList.remove('playing');
+              console.log('⏸️ Video paused and reset');
+            } catch (error) {
+              console.error('❌ Video pause error:', error);
+            }
+          }
+
+
+
+          function addVideoFallback(card) {
+            // Create fallback background with gradient
+            card.style.background = 'linear-gradient(135deg, #667eea 0%, #764ba2 100%)';
+            console.log('🔄 Applied fallback background for failed video');
+          }
+
+          // Performance optimization: Pause all videos when page becomes hidden
+          const visibilityChangeHandler = function () {
+            if (document.hidden) {
+              const videos = document.querySelectorAll('.card-video-bg');
+              videos.forEach(video => {
+                if (!video.paused) {
+                  video.pause();
+                }
+              });
+            }
+          };
+          document.addEventListener('visibilitychange', visibilityChangeHandler);
+
+          // Intersection Observer for performance optimization
+          if ('IntersectionObserver' in window) {
+            const videoObserver = new IntersectionObserver(function (entries) {
+              entries.forEach(entry => {
+                const video = entry.target.querySelector('.card-video-bg');
+                if (!video) return;
+
+                if (entry.isIntersecting) {
+                  // Video is in viewport, ensure it's ready
+                  if (video.readyState < 2) {
+                    video.load();
+                  }
+                } else {
+                  // Video is out of viewport, pause if playing
+                  if (!video.paused) {
+                    video.pause();
+                    entry.target.classList.remove('playing');
+                  }
+                }
+              });
+            }, {
+              threshold: 0.1,
+              rootMargin: '50px'
+            });
+
+            // Observe all video cards
+            document.querySelectorAll('.video-card-container').forEach(card => {
+              videoObserver.observe(card);
+            });
+          }
+
+          // Settings Fullscreen Toggle Functionality
+          function initSettingsFullscreenToggle() {
+            const fullscreenToggle = document.getElementById('fullscreen-toggle');
+            const fullscreenSwitch = document.getElementById('switch-fullscreen-mode');
+            const fullscreenIcon = fullscreenToggle.querySelector('i');
+
+            // Check if fullscreen is supported
+            const isFullscreenSupported = document.documentElement.requestFullscreen ||
+              document.documentElement.webkitRequestFullscreen ||
+              document.documentElement.msRequestFullscreen;
+
+            if (!isFullscreenSupported) {
+              // Hide fullscreen option if not supported
+              fullscreenToggle.style.display = 'none';
+              console.log('❌ Fullscreen not supported on this device');
+              return;
+            }
+
+            // Load saved fullscreen preference
+            const savedFullscreenState = localStorage.getItem('fullscreen-mode') === 'true';
+            fullscreenSwitch.checked = savedFullscreenState;
+            updateFullscreenIcon(savedFullscreenState);
+
+            // Apply saved state on page load
+            if (savedFullscreenState) {
+              // Small delay to ensure page is fully loaded
+              setTimeout(() => {
+                requestFullscreenMode();
+              }, 1000);
+            }
+
+            // Handle toggle click
+            const fullscreenToggleClickHandler = function (e) {
+              e.preventDefault();
+              toggleFullscreenMode();
+            };
+            fullscreenToggle.addEventListener('click', fullscreenToggleClickHandler);
+
+            // Handle switch change
+            fullscreenSwitch.addEventListener('change', function () {
+              toggleFullscreenMode();
+            });
+
+            function toggleFullscreenMode() {
+              const isCurrentlyFullscreen = document.fullscreenElement ||
+                document.webkitFullscreenElement ||
+                document.msFullscreenElement;
+
+              if (isCurrentlyFullscreen) {
+                exitFullscreenMode();
+              } else {
+                requestFullscreenMode();
+              }
+            }
+
+            function requestFullscreenMode() {
+              const element = document.documentElement;
+
+              if (element.requestFullscreen) {
+                element.requestFullscreen().then(() => {
+                  onFullscreenEnter();
+                }).catch(err => {
+                  console.warn('Fullscreen request failed:', err);
+                  onFullscreenError();
+                });
+              } else if (element.webkitRequestFullscreen) {
+                element.webkitRequestFullscreen();
+                onFullscreenEnter();
+              } else if (element.msRequestFullscreen) {
+                element.msRequestFullscreen();
+                onFullscreenEnter();
+              }
+            }
+
+            function exitFullscreenMode() {
+              if (document.exitFullscreen) {
+                document.exitFullscreen().then(() => {
+                  onFullscreenExit();
+                }).catch(err => {
+                  console.warn('Exit fullscreen failed:', err);
+                });
+              } else if (document.webkitExitFullscreen) {
+                document.webkitExitFullscreen();
+                onFullscreenExit();
+              } else if (document.msExitFullscreen) {
+                document.msExitFullscreen();
+                onFullscreenExit();
+              }
+            }
+
+            function onFullscreenEnter() {
+              fullscreenSwitch.checked = true;
+              updateFullscreenIcon(true);
+              localStorage.setItem('fullscreen-mode', 'true');
+              document.body.classList.add('fullscreen-active');
+              console.log('✅ Entered fullscreen mode');
+            }
+
+            function onFullscreenExit() {
+              fullscreenSwitch.checked = false;
+              updateFullscreenIcon(false);
+              localStorage.setItem('fullscreen-mode', 'false');
+              document.body.classList.remove('fullscreen-active');
+              console.log('❌ Exited fullscreen mode');
+            }
+
+            function onFullscreenError() {
+              fullscreenSwitch.checked = false;
+              updateFullscreenIcon(false);
+              localStorage.setItem('fullscreen-mode', 'false');
+              console.error('❌ Fullscreen request failed');
+            }
+
+            function updateFullscreenIcon(isFullscreen) {
+              if (isFullscreen) {
+                fullscreenIcon.className = 'fa font-12 fa-compress rounded-s bg-blue-dark color-white me-3';
+              } else {
+                fullscreenIcon.className = 'fa font-12 fa-expand rounded-s bg-blue-dark color-white me-3';
+              }
+            }
+
+            // Listen for fullscreen changes (user pressing F11 or Esc)
+            function handleFullscreenChange() {
+              const isCurrentlyFullscreen = document.fullscreenElement ||
+                document.webkitFullscreenElement ||
+                document.msFullscreenElement;
+
+              if (isCurrentlyFullscreen) {
+                onFullscreenEnter();
+              } else {
+                onFullscreenExit();
+              }
+            }
+
+            document.addEventListener('fullscreenchange', handleFullscreenChange);
+            document.addEventListener('webkitfullscreenchange', handleFullscreenChange);
+            document.addEventListener('msfullscreenchange', handleFullscreenChange);
+
+            // Handle keyboard shortcuts
+            document.addEventListener('keydown', function (e) {
+              // F11 key handling
+              if (e.key === 'F11') {
+                e.preventDefault();
+                toggleFullscreenMode();
+              }
+
+              // Ctrl/Cmd + Shift + F for fullscreen toggle
+              if ((e.ctrlKey || e.metaKey) && e.shiftKey && e.key === 'F') {
+                e.preventDefault();
+                toggleFullscreenMode();
+              }
+            });
+
+            console.log('🔲 Settings fullscreen toggle initialized');
+          }
+
+          // Swipe Cards Functionality
+          function initSwipeCards() {
+            const swipeContainers = document.querySelectorAll('.swipe-card-container');
+
+            swipeContainers.forEach(container => {
+              const cards = container.querySelectorAll('.swipe-card');
+              const indicators = container.querySelectorAll('.indicator');
+              let currentCard = 0;
+              let startX = 0;
+              let startY = 0;
+              let isDragging = false;
+
+              // Initialize first card as active
+              if (cards.length > 0) {
+                showCard(0);
+              }
+
+              // Touch/Mouse event handlers
+              container.addEventListener('touchstart', handleStart, { passive: false });
+              container.addEventListener('mousedown', handleStart);
+              container.addEventListener('touchmove', handleMove, { passive: false });
+              container.addEventListener('mousemove', handleMove);
+              container.addEventListener('touchend', handleEnd);
+              container.addEventListener('mouseup', handleEnd);
+              container.addEventListener('mouseleave', handleEnd);
+
+              // Indicator click handlers
+              indicators.forEach((indicator, index) => {
+                indicator.addEventListener('click', () => {
+                  showCard(index);
+                });
+              });
+
+              function handleStart(e) {
+                // Don't interfere with video controls or buttons
+                if (e.target.closest('.btn') || e.target.closest('a') || e.target.closest('button')) {
+                  return;
+                }
+
+                isDragging = true;
+                container.classList.add('swiping');
+
+                const clientX = e.touches ? e.touches[0].clientX : e.clientX;
+                const clientY = e.touches ? e.touches[0].clientY : e.clientY;
+
+                startX = clientX;
+                startY = clientY;
+
+                e.preventDefault();
+              }
+
+              function handleMove(e) {
+                if (!isDragging) return;
+
+                const clientX = e.touches ? e.touches[0].clientX : e.clientX;
+                const clientY = e.touches ? e.touches[0].clientY : e.clientY;
+
+                const deltaX = clientX - startX;
+                const deltaY = clientY - startY;
+
+                // Only handle horizontal swipes (ignore if more vertical than horizontal)
+                if (Math.abs(deltaY) > Math.abs(deltaX)) {
+                  return;
+                }
+
+                e.preventDefault();
+
+                // Apply transform to current card
+                const currentCardElement = cards[currentCard];
+                if (currentCardElement) {
+                  const transform = `translateX(${deltaX}px)`;
+                  currentCardElement.style.transform = transform;
+                }
+              }
+
+              function handleEnd(e) {
+                if (!isDragging) return;
+
+                isDragging = false;
+                container.classList.remove('swiping');
+
+                const clientX = e.changedTouches ? e.changedTouches[0].clientX : e.clientX;
+                const deltaX = clientX - startX;
+                const threshold = container.offsetWidth * 0.3; // 30% of container width
+
+                // Reset current card transform
+                const currentCardElement = cards[currentCard];
+                if (currentCardElement) {
+                  currentCardElement.style.transform = '';
+                }
+
+                // Determine if swipe was significant enough
+                if (Math.abs(deltaX) > threshold) {
+                  if (deltaX > 0) {
+                    // Swipe right - go to previous card
+                    showCard((currentCard - 1 + cards.length) % cards.length);
+                  } else {
+                    // Swipe left - go to next card
+                    showCard((currentCard + 1) % cards.length);
+                  }
+                } else {
+                  // Snap back to current card
+                  showCard(currentCard);
+                }
+              }
+
+              function showCard(index) {
+                if (index < 0 || index >= cards.length) return;
+
+                // Update cards
+                cards.forEach((card, i) => {
+                  card.classList.remove('active', 'prev', 'next');
+
+                  if (i === index) {
+                    card.classList.add('active');
+                  } else if (i < index) {
+                    card.classList.add('prev');
+                  } else {
+                    card.classList.add('next');
+                  }
+                });
+
+                // Update indicators
+                indicators.forEach((indicator, i) => {
+                  indicator.classList.toggle('active', i === index);
+                });
+
+                currentCard = index;
+                console.log(`🔄 Switched to card ${index + 1}/${cards.length}`);
+              }
+
+              console.log(`✅ Swipe functionality initialized for container with ${cards.length} cards`);
+            });
+          }
+
+          // Play Now Button Functionality
+          function initPlayNowButtons() {
+            const playButtons = document.querySelectorAll('.play-now-btn');
+
+            playButtons.forEach(button => {
+              button.addEventListener('click', function (e) {
+                e.preventDefault();
+                e.stopPropagation();
+
+                const videoSrc = this.getAttribute('data-video-src');
+                if (videoSrc) {
+                  openVideoFullscreen(videoSrc);
+                }
+              });
+            });
+
+            console.log(`✅ Play Now buttons initialized: ${playButtons.length} buttons`);
+          }
+
+          // Fullscreen Video Player
+          function openVideoFullscreen(videoSrc) {
+            // Create fullscreen video overlay
+            const overlay = document.createElement('div');
+            overlay.className = 'fullscreen-video-overlay';
+            overlay.style.cssText = `
+              position: fixed;
+              top: 0;
+              left: 0;
+              width: 100%;
+              height: 100%;
+              background: rgba(0, 0, 0, 1);
+              z-index: 9999;
+              display: flex;
+              justify-content: center;
+              align-items: center;
+            `;
+
+            // Create video element
+            const video = document.createElement('video');
+            video.style.cssText = `
+              width: 100%;
+              height: 100%;
+              object-fit: contain;
+              background: black;
+            `;
+            video.controls = true;
+            video.autoplay = true;
+            video.preload = 'metadata';
+
+            // Create close button
+            const closeButton = document.createElement('button');
+            closeButton.innerHTML = '×';
+            closeButton.style.cssText = `
+              position: absolute;
+              top: 20px;
+              right: 30px;
+              background: rgba(255, 255, 255, 0.2);
+              border: none;
+              color: white;
+              font-size: 40px;
+              font-weight: bold;
+              cursor: pointer;
+              border-radius: 50%;
+              width: 60px;
+              height: 60px;
+              display: flex;
+              align-items: center;
+              justify-content: center;
+              backdrop-filter: blur(10px);
+              transition: all 0.3s ease;
+            `;
+
+            // Close button hover effect
+            closeButton.addEventListener('mouseenter', function () {
+              this.style.background = 'rgba(255, 255, 255, 0.3)';
+              this.style.transform = 'scale(1.1)';
+            });
+
+            closeButton.addEventListener('mouseleave', function () {
+              this.style.background = 'rgba(255, 255, 255, 0.2)';
+              this.style.transform = 'scale(1)';
+            });
+
+            // Add video source
+            const source = document.createElement('source');
+            source.src = videoSrc;
+            source.type = 'video/mp4';
+            video.appendChild(source);
+
+            // Assemble overlay
+            overlay.appendChild(video);
+            overlay.appendChild(closeButton);
+            document.body.appendChild(overlay);
+
+            // Enter browser fullscreen mode
+            function enterBrowserFullscreen() {
+              if (overlay.requestFullscreen) {
+                overlay.requestFullscreen().catch(err => {
+                  console.warn('Fullscreen request failed:', err);
+                });
+              } else if (overlay.webkitRequestFullscreen) {
+                overlay.webkitRequestFullscreen();
+              } else if (overlay.msRequestFullscreen) {
+                overlay.msRequestFullscreen();
+              }
+            }
+
+            // Exit browser fullscreen mode
+            function exitBrowserFullscreen() {
+              if (document.exitFullscreen) {
+                document.exitFullscreen().catch(err => {
+                  console.warn('Exit fullscreen failed:', err);
+                });
+              } else if (document.webkitExitFullscreen) {
+                document.webkitExitFullscreen();
+              } else if (document.msExitFullscreen) {
+                document.msExitFullscreen();
+              }
+            }
+
+            // Close functionality
+            function closeFullscreen() {
+              video.pause();
+              exitBrowserFullscreen();
+              // Small delay to ensure fullscreen exit completes before removing overlay
+              setTimeout(() => {
+                if (document.body.contains(overlay)) {
+                  document.body.removeChild(overlay);
+                }
+              }, 100);
+              console.log('🔲 Fullscreen video closed');
+            }
+
+            // Event listeners for closing
+            closeButton.addEventListener('click', closeFullscreen);
+            overlay.addEventListener('click', function (e) {
+              if (e.target === overlay) {
+                closeFullscreen();
+              }
+            });
+
+            // ESC key to close
+            function handleKeyPress(e) {
+              if (e.key === 'Escape') {
+                closeFullscreen();
+                document.removeEventListener('keydown', handleKeyPress);
+              }
+            }
+            document.addEventListener('keydown', handleKeyPress);
+
+            // Handle fullscreen change events
+            function handleFullscreenChange() {
+              const isFullscreen = document.fullscreenElement === overlay ||
+                document.webkitFullscreenElement === overlay ||
+                document.msFullscreenElement === overlay;
+
+              if (!isFullscreen && document.body.contains(overlay)) {
+                // User exited fullscreen (e.g., pressed ESC), close the video
+                closeFullscreen();
+              }
+            }
+
+            document.addEventListener('fullscreenchange', handleFullscreenChange);
+            document.addEventListener('webkitfullscreenchange', handleFullscreenChange);
+            document.addEventListener('msfullscreenchange', handleFullscreenChange);
+
+            // Video error handling
+            video.addEventListener('error', function () {
+              console.error('❌ Video failed to load in fullscreen');
+              closeFullscreen();
+            });
+
+            video.addEventListener('loadeddata', function () {
+              console.log('✅ Fullscreen video loaded successfully');
+              // Enter fullscreen after video loads
+              setTimeout(enterBrowserFullscreen, 100);
+            });
+
+            console.log('🎬 Opening video in fullscreen:', videoSrc);
+          }
+        });
+      </script>
+
+</body>
+
+</html>
