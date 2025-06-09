@@ -1,0 +1,388 @@
+// Header Component Styles
+// Reusable header styling for navigation, theme toggle, and responsive behavior
+
+.header {
+  position: relative;
+  width: 100%;
+  height: $navbar-height;
+  @include flex-between;
+  padding: 0 $spacing-4;
+  background: $theme-light-bg;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+  z-index: $z-index-fixed;
+  transition: all 0.3s ease;
+
+  // Fixed header positioning
+  &.header-fixed {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+  }
+
+  // Transparent header variant
+  &.header-transparent {
+    background: transparent;
+    border-bottom: none;
+    position: absolute;
+
+    .header-title,
+    .header-icon {
+      color: white;
+      text-shadow: 0 1px 3px rgba(0, 0, 0, 0.5);
+    }
+  }
+
+  // Logo center variant
+  &.header-logo-center {
+    justify-content: center;
+    position: relative;
+
+    .header-title {
+      position: absolute;
+      left: 50%;
+      transform: translateX(-50%);
+    }
+
+    .header-icon-1 {
+      position: absolute;
+      left: $spacing-4;
+    }
+
+    .header-icon-4 {
+      position: absolute;
+      right: $spacing-4;
+    }
+  }
+
+  // Header title
+  .header-title {
+    font-size: 1.1rem;
+    font-weight: 600;
+    color: $theme-light-text;
+    text-decoration: none;
+    transition: $transition-colors;
+
+    &:hover {
+      color: $primary-blue;
+      text-decoration: none;
+    }
+
+    &:focus {
+      outline: 2px solid $primary-blue;
+      outline-offset: 2px;
+    }
+  }
+
+  // Header icons
+  .header-icon {
+    @include touch-target(44px);
+    color: $theme-light-text;
+    text-decoration: none;
+    border-radius: $border-radius-base;
+    transition: all 0.3s ease;
+    position: relative;
+
+    i {
+      font-size: 1.1rem;
+    }
+
+    &:hover {
+      color: $primary-blue;
+      background: rgba($primary-blue, 0.1);
+      text-decoration: none;
+    }
+
+    &:focus {
+      outline: 2px solid $primary-blue;
+      outline-offset: 2px;
+    }
+
+    &:active {
+      transform: scale(0.95);
+    }
+
+    // Icon positioning variants
+    &.header-icon-1 {
+      order: -1;
+    }
+
+    &.header-icon-4 {
+      order: 1;
+    }
+  }
+
+  // Back button specific styling
+  .header-icon[data-back-button] {
+    &::before {
+      content: '';
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      width: 32px;
+      height: 32px;
+      border-radius: 50%;
+      background: transparent;
+      transition: background 0.3s ease;
+    }
+
+    &:hover::before {
+      background: rgba($primary-blue, 0.1);
+    }
+  }
+
+  // Theme toggle specific styling
+  .header-icon[data-toggle-theme] {
+    i {
+      transition: transform 0.3s ease;
+    }
+
+    &:hover i {
+      transform: rotate(15deg);
+    }
+  }
+}
+
+// Dark theme adjustments
+@include theme-dark {
+  .header {
+    background: $theme-dark-bg;
+    border-bottom-color: rgba(255, 255, 255, 0.1);
+
+    .header-title {
+      color: $theme-dark-text;
+
+      &:hover {
+        color: $primary-blue-light;
+      }
+    }
+
+    .header-icon {
+      color: $theme-dark-text;
+
+      &:hover {
+        color: $primary-blue-light;
+        background: rgba($primary-blue-light, 0.1);
+      }
+    }
+
+    &.header-transparent {
+      .header-title,
+      .header-icon {
+        color: white;
+      }
+    }
+  }
+}
+
+// Header clear spacing classes
+.header-clear-small {
+  padding-top: calc(#{$navbar-height} + #{$spacing-4});
+}
+
+.header-clear-medium {
+  padding-top: calc(#{$navbar-height} + #{$spacing-6});
+}
+
+.header-clear-large {
+  padding-top: calc(#{$navbar-height} + #{$spacing-8});
+}
+
+// Responsive design
+@include respond-below(md) {
+  .header {
+    height: 50px;
+    padding: 0 $spacing-3;
+
+    .header-title {
+      font-size: 1rem;
+    }
+
+    .header-icon {
+      min-width: 40px;
+      min-height: 40px;
+
+      i {
+        font-size: 1rem;
+      }
+    }
+
+    &.header-logo-center {
+      .header-icon-1 {
+        left: $spacing-3;
+      }
+
+      .header-icon-4 {
+        right: $spacing-3;
+      }
+    }
+  }
+
+  .header-clear-small {
+    padding-top: calc(50px + #{$spacing-3});
+  }
+
+  .header-clear-medium {
+    padding-top: calc(50px + #{$spacing-4});
+  }
+
+  .header-clear-large {
+    padding-top: calc(50px + #{$spacing-6});
+  }
+}
+
+@include respond-below(sm) {
+  .header {
+    padding: 0 $spacing-2;
+
+    .header-title {
+      font-size: 0.9rem;
+      max-width: 60%;
+      @include text-truncate;
+    }
+
+    .header-icon {
+      min-width: 36px;
+      min-height: 36px;
+
+      i {
+        font-size: 0.9rem;
+      }
+    }
+
+    &.header-logo-center {
+      .header-icon-1 {
+        left: $spacing-2;
+      }
+
+      .header-icon-4 {
+        right: $spacing-2;
+      }
+    }
+  }
+}
+
+// Animation for header hide/show
+.header.header-fixed {
+  transform: translateY(0);
+  transition: transform 0.3s ease;
+
+  &.header-hidden {
+    transform: translateY(-100%);
+  }
+}
+
+// Header with search functionality
+.header-search {
+  .search-container {
+    flex: 1;
+    max-width: 300px;
+    margin: 0 $spacing-4;
+    position: relative;
+
+    input {
+      width: 100%;
+      padding: $spacing-2 $spacing-4 $spacing-2 $spacing-10;
+      border: 1px solid rgba(0, 0, 0, 0.1);
+      border-radius: $border-radius-lg;
+      background: rgba(255, 255, 255, 0.9);
+      font-size: 0.9rem;
+      transition: all 0.3s ease;
+
+      &:focus {
+        outline: none;
+        border-color: $primary-blue;
+        background: white;
+        box-shadow: 0 0 0 3px rgba($primary-blue, 0.1);
+      }
+
+      &::placeholder {
+        color: rgba(0, 0, 0, 0.5);
+      }
+    }
+
+    .search-icon {
+      position: absolute;
+      left: $spacing-3;
+      top: 50%;
+      transform: translateY(-50%);
+      color: rgba(0, 0, 0, 0.5);
+      font-size: 0.9rem;
+      pointer-events: none;
+    }
+  }
+
+  @include theme-dark {
+    .search-container {
+      input {
+        background: rgba(255, 255, 255, 0.1);
+        border-color: rgba(255, 255, 255, 0.2);
+        color: white;
+
+        &:focus {
+          background: rgba(255, 255, 255, 0.15);
+          border-color: $primary-blue-light;
+        }
+
+        &::placeholder {
+          color: rgba(255, 255, 255, 0.5);
+        }
+      }
+
+      .search-icon {
+        color: rgba(255, 255, 255, 0.5);
+      }
+    }
+  }
+}
+
+// Header notification badge
+.header-icon {
+  .notification-badge {
+    position: absolute;
+    top: 8px;
+    right: 8px;
+    width: 8px;
+    height: 8px;
+    background: $red-dark;
+    border-radius: 50%;
+    border: 2px solid white;
+
+    &.with-count {
+      width: auto;
+      height: 16px;
+      min-width: 16px;
+      padding: 0 4px;
+      font-size: 0.6rem;
+      font-weight: 600;
+      color: white;
+      @include flex-center;
+      border-radius: 8px;
+    }
+  }
+
+  @include theme-dark {
+    .notification-badge {
+      border-color: $theme-dark-bg;
+    }
+  }
+}
+
+// Touch-friendly improvements
+@media (hover: none) and (pointer: coarse) {
+  .header {
+    .header-icon:hover {
+      background: transparent;
+      transform: none;
+    }
+
+    .header-icon:hover::before {
+      background: transparent;
+    }
+
+    .header-icon[data-toggle-theme]:hover i {
+      transform: none;
+    }
+  }
+}

@@ -1,0 +1,396 @@
+// FooterBar Component Styles
+// Bottom navigation bar with active states, transitions, and responsive behavior
+
+#footer-bar {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: $footer-height;
+  background: $theme-dark-bg;
+  border-top: 1px solid rgba(255, 255, 255, 0.1);
+  z-index: $z-index-fixed;
+  @include flex-center;
+  gap: $spacing-2;
+  padding: 0 $spacing-2;
+  transform: translateY(0);
+  transition: transform 0.3s ease;
+  --footer-bg: #{$theme-dark-bg};
+
+  // Navigation links
+  a {
+    @include flex-column-center;
+    color: rgba(255, 255, 255, 0.6);
+    text-decoration: none;
+    padding: $spacing-2;
+    border-radius: $border-radius-base;
+    transition: all 0.3s ease;
+    min-width: 60px;
+    flex: 1;
+    max-width: 80px;
+    position: relative;
+    overflow: hidden;
+
+    // Icon
+    i {
+      font-size: 1.2rem;
+      margin-bottom: $spacing-1;
+      transition: all 0.3s ease;
+    }
+
+    // Label
+    span {
+      font-size: $font-size-xs;
+      font-weight: $font-weight-medium;
+      line-height: 1;
+      transition: all 0.3s ease;
+      @include text-truncate;
+      max-width: 100%;
+    }
+
+    // Hover state
+    &:hover {
+      color: rgba(255, 255, 255, 0.8);
+      text-decoration: none;
+      background: rgba(255, 255, 255, 0.05);
+
+      i {
+        transform: translateY(-1px);
+      }
+    }
+
+    // Active state
+    &.active-nav {
+      color: $primary-blue !important;
+      background: rgba($primary-blue, 0.1);
+
+      i {
+        transform: scale(1.1);
+      }
+
+      span {
+        font-weight: $font-weight-semibold;
+      }
+    }
+
+    // Focus state
+    &:focus {
+      outline: 2px solid $primary-blue;
+      outline-offset: 2px;
+    }
+
+    // Active/pressed state
+    &:active {
+      transform: scale(0.95);
+    }
+  }
+
+  // Notification badge
+  .nav-badge {
+    position: absolute;
+    top: 8px;
+    right: 12px;
+    width: 8px;
+    height: 8px;
+    background: $red-dark;
+    border-radius: 50%;
+    border: 2px solid var(--footer-bg);
+    z-index: 1;
+
+    &.with-count {
+      width: auto;
+      height: 16px;
+      min-width: 16px;
+      padding: 0 4px;
+      font-size: 0.6rem;
+      font-weight: 600;
+      color: white;
+      @include flex-center;
+      border-radius: 8px;
+    }
+  }
+}
+
+// Light theme adjustments
+@include theme-light {
+  #footer-bar {
+    background: $theme-light-bg;
+    border-top-color: rgba(0, 0, 0, 0.1);
+    --footer-bg: #{$theme-light-bg};
+
+    a {
+      color: rgba(0, 0, 0, 0.6);
+
+      &:hover {
+        color: rgba(0, 0, 0, 0.8);
+        background: rgba(0, 0, 0, 0.05);
+      }
+
+      &.active-nav {
+        color: $primary-blue !important;
+        background: rgba($primary-blue, 0.1);
+      }
+    }
+  }
+}
+
+// Footer bar variants
+#footer-bar {
+  // Variant 1: Default (current styling)
+  &.footer-bar-1 {
+    // Already defined above
+  }
+
+  // Variant 2: Compact
+  &.footer-bar-2 {
+    height: 60px;
+    gap: $spacing-1;
+
+    a {
+      min-width: 50px;
+      padding: $spacing-1;
+
+      i {
+        font-size: 1.1rem;
+        margin-bottom: 2px;
+      }
+
+      span {
+        font-size: 0.7rem;
+      }
+    }
+  }
+
+  // Variant 3: Icon only
+  &.footer-bar-3 {
+    height: 50px;
+
+    a {
+      min-width: 50px;
+      padding: $spacing-2;
+
+      i {
+        font-size: 1.3rem;
+        margin-bottom: 0;
+      }
+
+      span {
+        display: none;
+      }
+    }
+  }
+
+  // Variant 4: Floating
+  &.footer-bar-4 {
+    bottom: $spacing-4;
+    left: $spacing-4;
+    right: $spacing-4;
+    border-radius: $border-radius-xl;
+    box-shadow: $shadow-xl;
+    border: none;
+    backdrop-filter: blur(10px);
+    background: rgba(0, 0, 0, 0.8);
+
+    @include theme-light {
+      background: rgba(255, 255, 255, 0.9);
+    }
+  }
+}
+
+// Page content spacing for footer bar
+.page-content {
+  padding-bottom: calc(#{$footer-height} + #{$spacing-4});
+
+  // Adjust for different footer variants
+  .footer-bar-2 ~ & {
+    padding-bottom: calc(60px + #{$spacing-4});
+  }
+
+  .footer-bar-3 ~ & {
+    padding-bottom: calc(50px + #{$spacing-4});
+  }
+
+  .footer-bar-4 ~ & {
+    padding-bottom: calc(#{$footer-height} + #{$spacing-8});
+  }
+}
+
+// Responsive design
+@include respond-below(md) {
+  #footer-bar {
+    height: 65px;
+    gap: $spacing-1;
+
+    a {
+      min-width: 50px;
+      padding: $spacing-1;
+
+      i {
+        font-size: 1.1rem;
+      }
+
+      span {
+        font-size: 0.7rem;
+      }
+    }
+
+    .nav-badge {
+      top: 6px;
+      right: 10px;
+      width: 6px;
+      height: 6px;
+
+      &.with-count {
+        height: 14px;
+        min-width: 14px;
+        font-size: 0.55rem;
+        padding: 0 3px;
+      }
+    }
+  }
+
+  .page-content {
+    padding-bottom: calc(65px + #{$spacing-3});
+  }
+}
+
+@include respond-below(sm) {
+  #footer-bar {
+    height: 60px;
+    padding: 0 $spacing-1;
+
+    a {
+      min-width: 45px;
+      padding: $spacing-1;
+
+      i {
+        font-size: 1rem;
+        margin-bottom: 1px;
+      }
+
+      span {
+        font-size: 0.65rem;
+      }
+    }
+
+    .nav-badge {
+      top: 4px;
+      right: 8px;
+    }
+  }
+
+  .page-content {
+    padding-bottom: calc(60px + #{$spacing-3});
+  }
+}
+
+// Safe area adjustments for iOS
+@supports (padding-bottom: env(safe-area-inset-bottom)) {
+  #footer-bar {
+    padding-bottom: env(safe-area-inset-bottom);
+    height: calc(#{$footer-height} + env(safe-area-inset-bottom));
+  }
+
+  .page-content {
+    padding-bottom: calc(#{$footer-height} + env(safe-area-inset-bottom) + #{$spacing-4});
+  }
+}
+
+// Hide footer bar animation
+#footer-bar.footer-hidden {
+  transform: translateY(100%);
+}
+
+// Ripple effect container
+#footer-bar a {
+  position: relative;
+  overflow: hidden;
+}
+
+// Loading state for navigation
+#footer-bar a.loading {
+  opacity: 0.6;
+  pointer-events: none;
+
+  &::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(
+      90deg,
+      transparent,
+      rgba(255, 255, 255, 0.2),
+      transparent
+    );
+    animation: loading-shimmer 1.5s infinite;
+  }
+}
+
+@keyframes loading-shimmer {
+  0% {
+    left: -100%;
+  }
+  100% {
+    left: 100%;
+  }
+}
+
+// Touch-friendly improvements
+@media (hover: none) and (pointer: coarse) {
+  #footer-bar {
+    a:hover {
+      background: transparent;
+      color: rgba(255, 255, 255, 0.6);
+
+      i {
+        transform: none;
+      }
+    }
+
+    a.active-nav:hover {
+      color: $primary-blue !important;
+      background: rgba($primary-blue, 0.1);
+    }
+  }
+
+  @include theme-light {
+    #footer-bar {
+      a:hover {
+        color: rgba(0, 0, 0, 0.6);
+      }
+    }
+  }
+}
+
+// High contrast mode support
+@media (prefers-contrast: high) {
+  #footer-bar {
+    border-top-width: 2px;
+
+    a {
+      &.active-nav {
+        background: $primary-blue;
+        color: white !important;
+      }
+    }
+  }
+}
+
+// Reduced motion support
+@media (prefers-reduced-motion: reduce) {
+  #footer-bar {
+    transition: none;
+
+    a {
+      transition: none;
+
+      i,
+      span {
+        transition: none;
+      }
+    }
+  }
+}

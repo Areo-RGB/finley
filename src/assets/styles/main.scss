@@ -1,0 +1,328 @@
+// Main SCSS entry point for Finley PWA
+// This file imports all global styles and feature-specific styles
+
+// === GLOBAL IMPORTS ===
+// Import variables first (required by other files)
+@import 'variables';
+
+// Import mixins (uses variables)
+@import 'mixins';
+
+// Import base styles (uses variables and mixins)
+@import 'base';
+
+// === BOOTSTRAP IMPORTS ===
+// Import Bootstrap CSS (keeping existing Bootstrap integration)
+@import '../../styles/bootstrap.css';
+
+// === FEATURE IMPORTS ===
+// Import feature-specific styles
+@import '../features/HomePage/homePage.scss';
+@import '../features/VideoGalleryPage/videoGalleryPage.scss';
+@import '../features/ProfilePage/profilePage.scss';
+@import '../features/ComparisonPage/comparisonPage.scss';
+
+// === COMPONENT IMPORTS ===
+// Import component-specific styles
+@import '../components/Header/Header.scss';
+@import '../components/FooterBar/FooterBar.scss';
+// @import '../components/VideoCard/VideoCard.scss';
+// @import '../components/SettingsMenu/SettingsMenu.scss';
+
+// === LEGACY STYLES ===
+// Import existing styles for compatibility during transition
+@import '../../styles/style.css';
+
+// === GLOBAL OVERRIDES ===
+// PWA-specific global styles that override or extend base styles
+
+// Preloader styles
+#preloader {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: $theme-dark-bg;
+  @include flex-center;
+  z-index: $z-index-modal + 100;
+  transition: opacity 0.3s ease, visibility 0.3s ease;
+
+  &.preloader-hide {
+    opacity: 0;
+    visibility: hidden;
+  }
+
+  .spinner-border {
+    width: 3rem;
+    height: 3rem;
+    border: 0.25em solid rgba($primary-blue, 0.25);
+    border-right-color: $primary-blue;
+    border-radius: 50%;
+    animation: spin 0.75s linear infinite;
+  }
+}
+
+// Page wrapper
+#page {
+  min-height: 100vh;
+  position: relative;
+
+  &.min-ios15 {
+    // iOS 15+ specific adjustments
+    padding-bottom: env(safe-area-inset-bottom);
+  }
+
+  &.device-is-ios {
+    // iOS-specific styles
+    -webkit-overflow-scrolling: touch;
+  }
+
+  &.device-is-android {
+    // Android-specific styles
+  }
+}
+
+// Footer bar
+#footer-bar {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: $footer-height;
+  background: $theme-dark-bg;
+  border-top: 1px solid rgba(255, 255, 255, 0.1);
+  z-index: $z-index-fixed;
+  @include flex-center;
+  gap: $spacing-4;
+
+  a {
+    @include flex-column-center;
+    color: rgba(255, 255, 255, 0.6);
+    text-decoration: none;
+    padding: $spacing-2;
+    border-radius: $border-radius-base;
+    transition: $transition-colors;
+    min-width: 60px;
+
+    &.active-nav,
+    &:hover {
+      color: $primary-blue;
+    }
+
+    i {
+      font-size: 1.2rem;
+      margin-bottom: $spacing-1;
+    }
+
+    span {
+      font-size: $font-size-xs;
+      font-weight: $font-weight-medium;
+    }
+  }
+
+  @include theme-light {
+    background: $theme-light-bg;
+    border-top-color: rgba(0, 0, 0, 0.1);
+
+    a {
+      color: rgba(0, 0, 0, 0.6);
+
+      &.active-nav,
+      &:hover {
+        color: $primary-blue;
+      }
+    }
+  }
+}
+
+// Page content
+.page-content {
+  padding-bottom: calc(#{$footer-height} + #{$spacing-4});
+  min-height: 100vh;
+}
+
+// Menu system
+.menu {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: $z-index-modal;
+  display: none;
+
+  &.menu-active {
+    display: block;
+  }
+}
+
+.menu-hider {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.5);
+  z-index: $z-index-modal-backdrop;
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity 0.3s ease, visibility 0.3s ease;
+
+  &.menu-active {
+    opacity: 1;
+    visibility: visible;
+  }
+}
+
+// Card system
+.card {
+  @include card-base;
+  border: none;
+  
+  @include theme-dark {
+    background: lighten($theme-dark-bg, 5%);
+    color: $theme-dark-text;
+  }
+
+  &.card-style {
+    margin-bottom: $spacing-4;
+  }
+}
+
+// Button system
+.btn {
+  @include button-base;
+
+  &.btn-s {
+    padding: $spacing-2 $spacing-4;
+    font-size: $font-size-sm;
+  }
+
+  &.btn-m {
+    padding: $spacing-3 $spacing-6;
+    font-size: $font-size-base;
+  }
+
+  &.btn-l {
+    padding: $spacing-4 $spacing-8;
+    font-size: $font-size-lg;
+  }
+
+  &.bg-green-dark {
+    @include button-variant($green-dark);
+  }
+
+  &.bg-blue-dark {
+    @include button-variant($primary-blue-dark);
+  }
+
+  &.bg-red-dark {
+    @include button-variant($red-dark);
+  }
+}
+
+// Divider
+.divider {
+  height: 1px;
+  background: rgba(255, 255, 255, 0.1);
+  margin: $spacing-4 0;
+
+  &.divider-margins {
+    margin: $spacing-6 $spacing-4;
+  }
+
+  @include theme-light {
+    background: rgba(0, 0, 0, 0.1);
+  }
+}
+
+// Color utilities for highlights
+.color-highlight {
+  color: $primary-blue !important;
+}
+
+.color-white {
+  color: $white !important;
+}
+
+.color-blue-dark {
+  color: $primary-blue-dark !important;
+}
+
+.color-green-dark {
+  color: $green-dark !important;
+}
+
+.color-red-dark {
+  color: $red-dark !important;
+}
+
+.color-yellow-dark {
+  color: $yellow-dark !important;
+}
+
+// Background gradient utilities
+.bg-gradient {
+  background: linear-gradient(
+    135deg,
+    rgba(0, 0, 0, 0.1) 0%,
+    rgba(0, 0, 0, 0.3) 50%,
+    rgba(0, 0, 0, 0.6) 100%
+  );
+}
+
+// Offline/Online messages
+.offline-message,
+.online-message {
+  position: fixed;
+  top: 20px;
+  left: 50%;
+  transform: translateX(-50%);
+  padding: $spacing-3 $spacing-6;
+  border-radius: $border-radius-lg;
+  font-weight: $font-weight-semibold;
+  z-index: $z-index-tooltip;
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity 0.3s ease, visibility 0.3s ease, transform 0.3s ease;
+
+  &.offline-message-active,
+  &.online-message-active {
+    opacity: 1;
+    visibility: visible;
+    transform: translateX(-50%) translateY(0);
+  }
+}
+
+// Responsive adjustments
+@include respond-below(md) {
+  .page-content {
+    padding-left: $spacing-3;
+    padding-right: $spacing-3;
+  }
+
+  #footer-bar {
+    a {
+      min-width: 50px;
+      
+      span {
+        font-size: 0.7rem;
+      }
+    }
+  }
+}
+
+// Print styles
+@media print {
+  #footer-bar,
+  .menu,
+  .menu-hider,
+  #preloader {
+    display: none !important;
+  }
+
+  .page-content {
+    padding-bottom: 0;
+  }
+}

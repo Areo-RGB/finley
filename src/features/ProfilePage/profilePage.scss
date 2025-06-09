@@ -1,0 +1,449 @@
+// ProfilePage Feature Styles
+// Styles for workout timer, video player, exercise selection, and training interface
+
+/* Workout Configuration Controls */
+.workout-config-row {
+  .form-select {
+    color: #212529;
+    background: #ffffff;
+    font-weight: 600;
+    font-size: 0.9rem;
+    border: none;
+    border-radius: $border-radius-md;
+    box-shadow: $shadow-md;
+  }
+
+  .form-label {
+    font-weight: 700;
+    font-size: 0.8rem;
+    margin-bottom: $spacing-2;
+    text-align: center;
+    display: block;
+  }
+}
+
+/* Custom Video Player */
+.custom-video-player {
+  position: relative;
+  background: #000;
+  border-radius: 10px;
+  overflow: hidden;
+
+  #main-video {
+    width: 100%;
+    height: 300px;
+    display: block;
+    object-fit: cover;
+  }
+
+  /* Video Overlays */
+  #video-title {
+    position: absolute;
+    top: 15px;
+    left: 15px;
+    z-index: 15;
+    color: white;
+    font-size: 1.5rem;
+    font-weight: 700;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.8);
+  }
+
+  /* Timer Overlay */
+  .timer-overlay {
+    position: absolute;
+    top: 15px;
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 15;
+    text-align: center;
+
+    #timer-display {
+      color: white;
+      font-size: 2.5rem;
+      font-weight: 900;
+      line-height: 1;
+      text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.8);
+      transition: color 0.3s ease;
+    }
+
+    p {
+      color: white;
+      opacity: 0.9;
+      margin: 0;
+      font-size: 0.8rem;
+      text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.8);
+    }
+  }
+
+  /* Custom Play/Pause Button */
+  .custom-controls {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    @include flex-center;
+    background: rgba(0, 0, 0, 0.3);
+    transition: opacity 0.3s ease;
+
+    .play-pause-button {
+      background: rgba(255, 255, 255, 0.9);
+      border: none;
+      border-radius: 50%;
+      width: 80px;
+      height: 80px;
+      @include flex-center;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+
+      &:hover {
+        background: rgba(255, 255, 255, 1);
+        transform: scale(1.05);
+      }
+
+      i {
+        font-size: 28px;
+        color: #333;
+        margin-left: 4px; // Adjust play icon position
+      }
+    }
+  }
+
+  /* Stats Overlay */
+  #stats-overlay {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    z-index: 15;
+    background: linear-gradient(
+      to top,
+      rgba(0, 0, 0, 0.8) 0%,
+      rgba(0, 0, 0, 0.4) 50%,
+      transparent 100%
+    );
+    padding: 20px 15px 15px 15px;
+    opacity: 1;
+    transition: opacity 0.3s ease;
+
+    .row {
+      text-align: center;
+    }
+
+    .stat-value {
+      color: white;
+      font-size: 1.3rem;
+      font-weight: 700;
+      text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.8);
+    }
+
+    .stat-label {
+      color: white;
+      opacity: 0.9;
+      margin: 0;
+      font-size: 0.75rem;
+      text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.8);
+    }
+  }
+}
+
+/* Modern Control Buttons */
+.modern-control-btn {
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
+  border: none;
+  background: rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(10px);
+  color: white;
+  @include flex-center;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  margin: 0 auto;
+
+  &:hover {
+    background: rgba(255, 255, 255, 0.2);
+    transform: translateY(-2px);
+  }
+
+  &:active {
+    transform: translateY(0);
+  }
+
+  i {
+    font-size: 1.2rem;
+  }
+
+  &.speed-btn {
+    span {
+      font-size: 0.9rem;
+      font-weight: 600;
+    }
+  }
+}
+
+.control-label {
+  color: white;
+  font-size: 0.8rem;
+  margin-top: $spacing-2;
+  margin-bottom: 0;
+  text-align: center;
+  opacity: 0.8;
+}
+
+/* Exercise Cards */
+.exercise-card {
+  text-decoration: none;
+  color: inherit;
+  transition: all 0.3s ease;
+
+  &:hover {
+    color: inherit;
+    text-decoration: none;
+    transform: translateY(-2px);
+
+    .video-card-container {
+      box-shadow: $shadow-lg;
+    }
+  }
+
+  .video-card-container {
+    cursor: pointer;
+    position: relative;
+    overflow: hidden;
+    transition: all 0.3s ease;
+
+    .card-video-bg {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      z-index: 1;
+      transition: transform 0.3s ease;
+    }
+
+    &:hover .card-video-bg {
+      transform: scale(1.05);
+    }
+  }
+
+  .exercise-info {
+    h5 {
+      font-weight: 600;
+      font-size: 1rem;
+      line-height: 1.2;
+      margin-bottom: $spacing-1;
+    }
+
+    .exercise-type {
+      display: block;
+      font-size: 0.7rem;
+      font-weight: 400;
+      opacity: 0.6;
+      margin-bottom: $spacing-2;
+    }
+
+    .exercise-duration {
+      margin: 0;
+      
+      i {
+        color: $primary-blue;
+        margin-right: $spacing-2;
+      }
+    }
+  }
+}
+
+/* Performance Metrics Tabs */
+#performance-metrics-tabs {
+  .tab-controls {
+    margin-bottom: $spacing-4;
+
+    a {
+      padding: $spacing-2 $spacing-4;
+      border-radius: $border-radius-lg;
+      text-decoration: none;
+      font-weight: 600;
+      font-size: 0.85rem;
+      transition: all 0.3s ease;
+      margin-right: $spacing-2;
+      margin-bottom: $spacing-2;
+      display: inline-block;
+
+      &[data-active],
+      &.active {
+        background: $primary-blue !important;
+        color: white !important;
+      }
+
+      &:hover:not([data-active]):not(.active) {
+        background: rgba($primary-blue, 0.1);
+      }
+    }
+  }
+
+  .collapse {
+    &.show {
+      animation: slideInUp 0.3s ease;
+    }
+  }
+}
+
+/* Workout Settings Buttons */
+.workout-settings-buttons {
+  .btn {
+    font-size: 0.8rem;
+    padding: $spacing-2 $spacing-4;
+    font-weight: 700;
+    text-transform: uppercase;
+    border-radius: $border-radius-md;
+    transition: all 0.3s ease;
+
+    &:hover {
+      transform: translateY(-1px);
+      box-shadow: $shadow-md;
+    }
+
+    &:active {
+      transform: translateY(0);
+    }
+  }
+}
+
+/* Timer States */
+.timer-rest-phase {
+  #timer-display {
+    color: #FFC107 !important; // Yellow for rest
+  }
+}
+
+.timer-exercise-phase {
+  #timer-display {
+    color: white !important;
+  }
+}
+
+.timer-completed {
+  #timer-display {
+    color: #4CAF50 !important; // Green for completion
+  }
+}
+
+/* Responsive Design */
+@include respond-below(md) {
+  .custom-video-player {
+    #main-video {
+      height: 250px;
+    }
+
+    #video-title {
+      font-size: 1.2rem;
+      top: 10px;
+      left: 10px;
+    }
+
+    .timer-overlay {
+      top: 10px;
+
+      #timer-display {
+        font-size: 2rem;
+      }
+
+      p {
+        font-size: 0.7rem;
+      }
+    }
+
+    .custom-controls .play-pause-button {
+      width: 60px;
+      height: 60px;
+
+      i {
+        font-size: 20px;
+      }
+    }
+
+    #stats-overlay {
+      padding: 15px 10px 10px 10px;
+
+      .stat-value {
+        font-size: 1.1rem;
+      }
+
+      .stat-label {
+        font-size: 0.7rem;
+      }
+    }
+  }
+
+  .modern-control-btn {
+    width: 50px;
+    height: 50px;
+
+    i {
+      font-size: 1rem;
+    }
+
+    &.speed-btn span {
+      font-size: 0.8rem;
+    }
+  }
+
+  .control-label {
+    font-size: 0.7rem;
+  }
+
+  .exercise-card {
+    .exercise-info {
+      h5 {
+        font-size: 0.9rem;
+      }
+
+      .exercise-type {
+        font-size: 0.65rem;
+      }
+    }
+  }
+}
+
+/* Dark Theme Adjustments */
+@include theme-dark {
+  .workout-config-row .form-select {
+    background: lighten($theme-dark-bg, 10%);
+    color: $theme-dark-text;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+  }
+
+  .exercise-card {
+    .exercise-info {
+      color: $theme-dark-text;
+    }
+  }
+}
+
+/* Light Theme Adjustments */
+@include theme-light {
+  .custom-video-player {
+    .timer-overlay,
+    #video-title,
+    #stats-overlay {
+      // Keep white text on video overlays regardless of theme
+    }
+  }
+
+  .modern-control-btn {
+    background: rgba(0, 0, 0, 0.1);
+    color: $theme-light-text;
+
+    &:hover {
+      background: rgba(0, 0, 0, 0.2);
+    }
+  }
+
+  .control-label {
+    color: $theme-light-text;
+  }
+}

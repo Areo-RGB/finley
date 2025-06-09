@@ -10,8 +10,8 @@
   <meta name="theme-color" content="#1b1d21" media="(prefers-color-scheme: dark)" />
   <meta name="theme-color" content="#ffffff" media="(prefers-color-scheme: light)" />
   <title>Finley Profile - QuoVadis</title>
-  <link rel="stylesheet" type="text/css" href="styles/bootstrap.css" />
-  <link rel="stylesheet" type="text/css" href="styles/style.css" />
+  <!-- Main SCSS entry point (Vite will process this) -->
+  <link rel="stylesheet" type="text/css" href="/src/assets/styles/main.scss" />
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&family=Source+Sans+Pro:wght@400;700&display=swap" rel="stylesheet">
@@ -1767,8 +1767,26 @@
       }
     </style>
 
-    <script type="text/javascript" src="scripts/bootstrap.min.js"></script>
-    <script type="text/javascript" src="scripts/custom.js"></script>
+    <!-- Bootstrap JS (keeping for compatibility) -->
+    <script type="text/javascript" src="/scripts/bootstrap.min.js"></script>
+
+    <!-- Supabase SDK (if needed) -->
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+
+    <!-- Main application entry point (ES modules) -->
+    <script type="module" src="/src/main.js"></script>
+
+    <!-- ProfilePage feature module -->
+    <script type="module">
+      import { initProfilePage } from './profilePage.js';
+
+      document.addEventListener("DOMContentLoaded", function () {
+        // Initialize ProfilePage features
+        initProfilePage();
+      });
+    </script>
+
+    <!-- Legacy inline script for compatibility -->
     <script type="text/javascript">
       document.addEventListener("DOMContentLoaded", function () {
         "use strict";

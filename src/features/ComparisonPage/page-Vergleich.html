@@ -8,8 +8,8 @@
   <meta name="viewport"
     content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1, viewport-fit=cover" />
   <title>StickyMobile BootStrap</title>
-  <link rel="stylesheet" type="text/css" href="styles/bootstrap.css">
-  <link rel="stylesheet" type="text/css" href="styles/style.css">
+  <!-- Main SCSS entry point (Vite will process this) -->
+  <link rel="stylesheet" type="text/css" href="/src/assets/styles/main.scss">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&family=Source+Sans+Pro:wght@400;700&display=swap" rel="stylesheet">
@@ -219,6 +219,22 @@
 
   </div>
 
-  <script type="text/javascript" src="scripts/bootstrap.min.js"></script>
-  <script type="text/javascript" src="scripts/custom.js"></script>
+  <!-- Bootstrap JS (keeping for compatibility) -->
+  <script type="text/javascript" src="/scripts/bootstrap.min.js"></script>
+
+  <!-- Supabase SDK (if needed) -->
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+
+  <!-- Main application entry point (ES modules) -->
+  <script type="module" src="/src/main.js"></script>
+
+  <!-- ComparisonPage feature module -->
+  <script type="module">
+    import { initComparisonPage } from './comparisonPage.js';
+
+    document.addEventListener("DOMContentLoaded", function () {
+      // Initialize ComparisonPage features
+      initComparisonPage();
+    });
+  </script>
 </body>
